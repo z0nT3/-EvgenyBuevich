@@ -9,13 +9,9 @@
     <!-- Подключаем иконки -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* БАЗОВЫЕ СТИЛИ */
-        html { 
-            scroll-behavior: smooth; 
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* ОСНОВНОЙ ФОН */
+        html { scroll-behavior: smooth; }
+    
+        /* ОСНОВНОЙ ФОН - ТВОЕ ИЗОБРАЖЕНИЕ ИЗ ПАПКИ IMAGES */
         body {
             background-image: url('images/background.jpg');
             background-size: cover;
@@ -29,29 +25,27 @@
             width: 100%;
         }
         
-        /* Затемнение фона для читаемости */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        /* Все секции поверх затемнения */
-        section, nav, footer {
+        /* ОБЛОЖКА - УБИРАЕМ ФОН, ОСТАВЛЯЕМ ТОЛЬКО ГРАДИЕНТ */
+        .hero-bg {
             position: relative;
-            z-index: 1;
+            overflow: hidden;
         }
         
-        /* АНИМАЦИИ */
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        /* ПЛАВНОЕ ПОЯВЛЕНИЕ */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .fade-in-up {
@@ -62,13 +56,11 @@
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
         
         /* СТЕКЛЯННЫЙ ЭФФЕКТ */
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
@@ -85,10 +77,13 @@
             text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
         }
         
+        .neon-border {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+        }
+        
         /* СТИЛЬНЫЙ СКРОЛЛБАР */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
@@ -99,106 +94,12 @@
             background: #4f46e5;
             border-radius: 4px;
         }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
 
-        /* ========== МОБИЛЬНАЯ НАВИГАЦИЯ ========== */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        .mobile-menu-btn span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background: white;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 320px;
-            height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 99;
-            padding: 80px 20px 30px;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu .nav-item {
-            display: block;
-            padding: 15px 0;
-            color: #d1d5db;
-            font-size: 1.2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu .nav-item:hover,
-        .mobile-menu .nav-item:active {
-            color: #4f46e5;
-            padding-left: 10px;
-        }
-        
-        .mobile-dropdown-content {
-            display: none;
-            padding-left: 20px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .mobile-dropdown-content a {
-            display: block;
-            padding: 12px 0;
-            color: #9ca3af;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .mobile-dropdown.active .mobile-dropdown-content {
-            display: block;
-        }
-        
-        .mobile-dropdown .dropdown-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-        
-        .mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 98;
-            display: none;
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-        }
-        
-        .mobile-overlay.active {
-            display: block;
-        }
-        
-        /* ========== СЛАЙДЕР ========== */
+        /* СТИЛИ ДЛЯ СЛАЙДЕРА */
         .slider-container {
             position: relative;
             width: 100%;
@@ -217,6 +118,7 @@
 
         .slide {
             min-width: 100%;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -237,11 +139,10 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             display: flex;
@@ -251,92 +152,114 @@
             transition: all 0.3s ease;
             z-index: 10;
             color: white;
-            font-size: 1.2rem;
-            -webkit-tap-highlight-color: transparent;
+            font-size: 1.5rem;
         }
 
-        .slider-btn:active {
-            background: rgba(79, 70, 229, 0.9);
-            transform: translateY(-50%) scale(0.95);
+        .slider-btn:hover {
+            background: rgba(79, 70, 229, 0.8);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-50%) scale(1.1);
         }
 
-        .slider-btn.prev { left: 10px; }
-        .slider-btn.next { right: 10px; }
+        .slider-btn.prev {
+            left: 20px;
+        }
+
+        .slider-btn.next {
+            right: 20px;
+        }
 
         .slider-dots {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .dot.active {
             background: #4f46e5;
             transform: scale(1.2);
             box-shadow: 0 0 10px #4f46e5;
         }
 
-        /* ========== ПРАЙС-КАРТОЧКИ ========== */
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* СТИЛИ ДЛЯ КАРТОЧЕК ПРАЙСОВ */
         .price-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
         .price-card {
-            background: rgba(10, 10, 10, 0.6);
+            background: rgba(10, 10, 10, 0.5);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            height: 100%;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(79, 70, 229, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 10, 0.7);
         }
 
         .card-image-container {
             width: 100%;
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            min-height: 180px;
-            max-height: 300px;
-            background: rgba(0,0,0,0.2);
+            position: relative;
+            height: auto;
+            min-height: 200px;
+            max-height: 350px;
         }
 
         .card-image {
             width: 100%;
             height: auto;
             object-fit: contain;
+            background-color: transparent;
             transition: transform 0.5s ease;
+            display: block;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
 
+        .price-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
         .card-content {
-            padding: 20px;
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             background: linear-gradient(to right, #fff, #a5b4fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -344,40 +267,40 @@
 
         .card-description {
             color: #9ca3af;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
         .price-tag {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
             color: #4f46e5;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
         }
 
         .prepayment {
             color: #10b981;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 15px;
             display: inline-block;
-            padding: 5px 12px;
+            padding: 5px 15px;
             background: rgba(16, 185, 129, 0.1);
             border-radius: 20px;
         }
 
         .includes {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-            margin-top: 15px;
+            padding-top: 20px;
+            margin-top: 20px;
         }
 
         .includes-title {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             color: #d1d5db;
         }
 
@@ -388,17 +311,64 @@
 
         .includes-list li {
             color: #9ca3af;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 10px;
         }
 
         .includes-list li i {
             color: #4f46e5;
-            font-size: 0.8rem;
-            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        /* СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dropdown-content a {
+            color: #d1d5db;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(79, 70, 229, 0.2);
+            color: white;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .nav-link {
+            cursor: pointer;
         }
 
         .btn-detail {
@@ -407,72 +377,118 @@
             background: rgba(79, 70, 229, 0.2);
             border: 1px solid rgba(79, 70, 229, 0.5);
             color: #a5b4fc;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 10px;
             text-decoration: none;
             transition: all 0.3s ease;
             text-align: center;
-            font-size: 0.95rem;
         }
 
-        .btn-detail:active {
-            background: rgba(79, 70, 229, 0.5);
+        .btn-detail:hover {
+            background: rgba(79, 70, 229, 0.4);
             color: white;
-            transform: scale(0.98);
+            border-color: #4f46e5;
         }
 
-        /* ========== КОНТАКТЫ (ПРОЗРАЧНЫЕ) ========== */
+        /* ========== ИСПРАВЛЕНИЯ ДЛЯ ПРОЗРАЧНОСТИ ========== */
+        
+        /* Убираем черные фоны у всех секций */
+        #portfolio,
+        #prices,
         #contacts {
             background: transparent !important;
+        }
+        
+        /* УБИРАЕМ ВСЕ РАМКИ И ФОНЫ У КОНТАКТОВ */
+        #contacts {
+            border: none !important;
         }
         
         #contacts .glass-card {
             background: transparent !important;
             backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
             border: none !important;
             box-shadow: none !important;
-            padding: 15px 0 !important;
+            padding: 20px 0 !important;
+        }
+        
+        #contacts .glass-card:hover {
+            background: transparent !important;
+            transform: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        #contacts h3, 
+        #contacts p, 
+        #contacts a,
+        #contacts .text-gray-400,
+        #contacts .text-gray-300 {
+            background: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        #contacts a {
+            transition: all 0.3s ease;
+        }
+        
+        #contacts a:hover {
+            transform: translateX(5px);
+            color: #4f46e5 !important;
+        }
+        
+        #contacts i {
+            background: transparent;
+        }
+        
+        #contacts .border-t {
+            border-top: none !important;
         }
 
-        /* ========== АДАПТИВНЫЕ СТИЛИ ========== */
+        /* ========== ТОЛЬКО АДАПТИВНОСТЬ ========== */
         
         /* Планшеты (до 1024px) */
         @media (max-width: 1024px) {
             .price-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             
             .hero-bg h1 {
                 font-size: 4rem;
             }
+            
+            .slider-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
         }
         
         /* Мобильные (до 768px) */
         @media (max-width: 768px) {
-            /* Навигация */
-            .desktop-nav {
-                display: none !important;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
+            /* Шапка */
+            nav .space-x-8 {
+                display: none;
             }
             
             nav .flex {
                 justify-content: space-between;
             }
             
-            nav .bg-gradient-to-r {
-                padding: 8px 16px;
+            nav .px-8 {
+                padding-left: 16px;
+                padding-right: 16px;
                 font-size: 0.9rem;
-                margin-right: 10px;
             }
             
             /* Обложка */
             .hero-bg h1 {
-                font-size: 2.5rem;
-                line-height: 1.2;
+                font-size: 2.8rem;
+            }
+            
+            .hero-bg .text-lg {
+                font-size: 1rem;
             }
             
             .hero-bg .w-40 {
@@ -483,43 +499,185 @@
             .hero-bg .flex-col.sm\:flex-row {
                 flex-direction: column;
                 gap: 15px;
+                max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .hero-bg .glass-card {
                 width: 100%;
-                text-align: center;
             }
             
-            /* Статистика */
             .hero-bg .flex.justify-center.gap-8 {
-                gap: 15px;
+                gap: 20px;
                 flex-wrap: wrap;
             }
             
             .hero-bg .text-3xl {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             /* Слайдер */
             .slide img {
-                max-height: 300px;
+                max-height: 350px;
             }
             
             .slider-btn {
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
                 font-size: 1rem;
             }
             
-            /* Заголовки секций */
+            .slider-btn.prev {
+                left: 10px;
+            }
+            
+            .slider-btn.next {
+                right: 10px;
+            }
+            
+            .slider-dots {
+                gap: 8px;
+            }
+            
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            /* Заголовки */
             h2.text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            h2.text-4xl {
                 font-size: 2.2rem;
             }
             
             /* Прайсы */
             .price-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .card-image-container {
+                max-height: 250px;
+            }
+            
+            .card-title {
+                font-size: 1.6rem;
+            }
+            
+            .price-tag {
+                font-size: 1.8rem;
+            }
+            
+            .prepayment {
+                font-size: 1rem;
+                padding: 4px 12px;
+            }
+            
+            .includes-title {
+                font-size: 1rem;
+            }
+            
+            .includes-list li {
+                font-size: 0.9rem;
+            }
+            
+            .btn-detail {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            /* Контакты */
+            #contacts .grid {
+                grid-template-columns: 1fr;
                 gap: 20px;
+            }
+            
+            #contacts .p-6 {
+                padding: 20px;
+            }
+            
+            #contacts .text-xl {
+                font-size: 1.3rem;
+            }
+            
+            /* Отступы секций */
+            .py-20 {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+            
+            .py-16 {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+            
+            .mt-12 {
+                margin-top: 30px;
+            }
+            
+            .mb-12 {
+                margin-bottom: 30px;
+            }
+            
+            /* Стрелка вниз */
+            .absolute.bottom-8 {
+                bottom: 20px;
+            }
+            
+            .w-6.h-10 {
+                width: 24px;
+                height: 36px;
+            }
+            
+            /* Анимации */
+            .fade-in-up {
+                animation-duration: 0.8s;
+            }
+        }
+        
+        /* Маленькие телефоны (до 480px) */
+        @media (max-width: 480px) {
+            .hero-bg h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-bg .w-40 {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .hero-bg .inline-block.px-4 {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            .hero-bg .text-3xl {
+                font-size: 1.5rem;
+            }
+            
+            .hero-bg .text-sm {
+                font-size: 0.7rem;
+            }
+            
+            h2.text-5xl {
+                font-size: 2rem;
+            }
+            
+            h2.text-4xl {
+                font-size: 1.8rem;
+            }
+            
+            .slide img {
+                max-height: 250px;
+            }
+            
+            .slider-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
             }
             
             .card-title {
@@ -530,81 +688,75 @@
                 font-size: 1.6rem;
             }
             
-            /* Контакты */
-            #contacts .grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .card-content {
+                padding: 20px;
+            }
+            
+            .includes-list li {
+                font-size: 0.85rem;
             }
             
             #contacts .p-6 {
                 padding: 15px;
             }
             
-            /* Отступы секций */
-            section {
-                padding: 40px 0;
+            #contacts .text-gray-300,
+            #contacts a {
+                font-size: 0.9rem;
             }
             
-            .py-20 {
-                padding-top: 40px;
-                padding-bottom: 40px;
+            #contacts .text-xs {
+                font-size: 0.7rem;
             }
             
-            /* Фикс для слайдера на мобильных */
-            .slider-container {
-                border-radius: 12px;
-            }
-            
-            .slider-dots {
-                gap: 6px;
-            }
-            
-            .dot {
-                width: 8px;
-                height: 8px;
-            }
-        }
-        
-        /* Маленькие телефоны (до 480px) */
-        @media (max-width: 480px) {
-            .hero-bg h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-bg .w-40 {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .hero-bg .inline-block.px-4 {
-                font-size: 0.8rem;
-            }
-            
-            h2.text-5xl {
-                font-size: 1.8rem;
-            }
-            
-            .price-tag {
-                font-size: 1.4rem;
-            }
-            
-            .card-title {
-                font-size: 1.3rem;
-            }
-            
-            .slide img {
-                max-height: 250px;
-            }
-            
-            .slider-btn {
-                width: 32px;
-                height: 32px;
-            }
-            
-            /* Уменьшаем отступы */
             .px-4 {
                 padding-left: 12px;
                 padding-right: 12px;
+            }
+            
+            .mt-12 {
+                margin-top: 25px;
+            }
+            
+            .mb-12 {
+                margin-bottom: 25px;
+            }
+            
+            .gap-8 {
+                gap: 16px;
+            }
+        }
+        
+        /* Планшеты в портретной ориентации (768-1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+            .price-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-bg h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        /* Планшеты в альбомной ориентации */
+        @media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
+            .price-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .slide img {
+                max-height: 500px;
+            }
+        }
+        
+        /* Большие планшеты */
+        @media (min-width: 820px) and (max-width: 1180px) {
+            .price-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .card-image-container {
+                max-height: 300px;
             }
         }
         
@@ -612,98 +764,188 @@
         @media (max-width: 900px) and (orientation: landscape) {
             .hero-bg {
                 min-height: auto;
-                padding: 100px 0 60px;
+                padding: 80px 0 40px;
+            }
+            
+            .hero-bg .w-40 {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .hero-bg h1 {
+                font-size: 2.5rem;
+                margin-bottom: 5px;
+            }
+            
+            .hero-bg .mb-8 {
+                margin-bottom: 15px;
+            }
+            
+            .hero-bg .flex-col.sm\:flex-row {
+                flex-direction: row;
+                max-width: none;
+            }
+            
+            .hero-bg .glass-card {
+                width: auto;
+            }
+            
+            .hero-bg .flex.justify-center.gap-8 {
+                margin-top: 20px;
             }
             
             .slide img {
-                max-height: 250px;
+                max-height: 220px;
             }
             
-            .mobile-menu {
-                padding-top: 60px;
-            }
-        }
-        
-        /* Планшеты в портретной ориентации */
-        @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
             .price-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .card-image-container {
+                max-height: 180px;
+            }
+            
+            .card-content {
+                padding: 15px;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .price-tag {
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+            
+            .prepayment {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+            
+            .includes {
+                padding-top: 12px;
+                margin-top: 12px;
+            }
+            
+            .includes-list li {
+                font-size: 0.8rem;
+                margin-bottom: 4px;
+            }
+            
+            .btn-detail {
+                margin-top: 12px;
+                padding: 6px 12px;
+            }
+        }
+        
+        /* Очень маленькие телефоны */
+        @media (max-width: 360px) {
             .hero-bg h1 {
-                font-size: 4rem;
+                font-size: 1.8rem;
+            }
+            
+            .hero-bg .w-40 {
+                width: 80px;
+                height: 80px;
+            }
+            
+            h2.text-5xl {
+                font-size: 1.8rem;
+            }
+            
+            h2.text-4xl {
+                font-size: 1.6rem;
+            }
+            
+            .card-title {
+                font-size: 1.2rem;
+            }
+            
+            .price-tag {
+                font-size: 1.4rem;
+            }
+            
+            .prepayment {
+                font-size: 0.85rem;
+            }
+            
+            .card-content {
+                padding: 15px;
+            }
+            
+            .includes-list li {
+                font-size: 0.8rem;
+            }
+            
+            nav .px-8 {
+                padding-left: 12px;
+                padding-right: 12px;
+                font-size: 0.8rem;
             }
         }
         
-        /* Планшеты в альбомной */
-        @media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
-            .price-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        /* Улучшение тач-взаимодействия */
-        @media (hover: none) and (pointer: coarse) {
-            .glass-card:hover {
+        /* Исправление для выпадающего меню на мобильных */
+        @media (max-width: 768px) {
+            .dropdown-content {
+                position: static;
                 transform: none;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                display: none;
+                min-width: 100%;
             }
-            
-            .slider-btn:hover {
-                background: rgba(255, 255, 255, 0.2);
-                transform: translateY(-50%);
+
+            .dropdown:hover .dropdown-content {
+                display: none;
             }
-            
-            .btn-detail:hover {
-                background: rgba(79, 70, 229, 0.2);
-                color: #a5b4fc;
-            }
-            
-            .price-card:hover {
-                transform: none;
-            }
-            
-            .card-image:hover {
-                transform: none;
+
+            .dropdown.active .dropdown-content {
+                display: block;
             }
         }
     </style>
 </head>
-<body>
-    <!-- ШАПКА С МОБИЛЬНЫМ МЕНЮ -->
-    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-white/10">
+<body class="font-sans">
+
+
+    <!-- ШАПКА (Навигация) с современными стрелочками -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- Логотип или пустой div -->
-                <div class="text-white font-bold text-xl md:text-2xl">
-                    <span class="text-indigo-400">EB</span>
-                </div>
+                <!-- ПУСТОЙ DIV чтобы сохранить отступы (можно удалить если не нужен) -->
+                <div></div>
                 
-                <!-- Десктоп навигация -->
-                <div class="desktop-nav hidden md:flex space-x-6 lg:space-x-8 items-center">
-                    <div class="dropdown relative">
-                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1 py-2">
+                <div class="hidden md:flex space-x-8 items-center">
+                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                    <div class="dropdown">
+                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
                             Портфолио
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                         </a>
-                        <div class="dropdown-content absolute hidden group-hover:block hover:block">
-                            <a href="life-style.html" class="block px-4 py-2">Life style</a>
-                            <a href="love-story.html" class="block px-4 py-2">Love story</a>
-                            <a href="portrait.html" class="block px-4 py-2">Portrait</a>
-                            <a href="street-style.html" class="block px-4 py-2">Street style</a>
-                            <a href="silhouette.html" class="block px-4 py-2">Silhouette</a>
-                            <a href="collage-style.html" class="block px-4 py-2">Collage style</a>
+                        <div class="dropdown-content">
+                            <a href="life-style.html">Life style</a>
+                            <a href="love-story.html">Love story</a>
+                            <a href="portrait.html">Portrait</a>
+                            <a href="street-style.html">Street style</a>
+                            <a href="silhouette.html">Silhouette</a>
+                            <a href="collage-style.html">Collage style</a>
                         </div>
                     </div>
 
-                    <a href="#" class="text-gray-300 hover:text-white transition relative group py-2">
+                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
+                    <a href="#" class="text-gray-300 hover:text-white transition relative group">
                         На главную
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                     </a>
                     
-                    <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1 py-2">
+                    <!-- СТИЛЫ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                    <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
                         Прайсы
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -711,177 +953,159 @@
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                     </a>
                     
-                    <a href="#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1 py-2">
-                        Контакты
+                    <a href="#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                        Связь со мной
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
-                    </a>
+                    </a>            
                 </div>
                 
-                <!-- Кнопка записи и мобильное меню -->
-                <div class="flex items-center gap-2">
-                    <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition shadow-lg flex items-center gap-1 md:gap-2 text-sm md:text-base">
-                        <i class="fas fa-calendar-check"></i>
-                        <span class="hidden xs:inline">Запись</span>
-                    </a>
-                    
-                    <!-- Кнопка мобильного меню -->
-                    <div class="mobile-menu-btn md:hidden" onclick="toggleMobileMenu()">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
+                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition shadow-lg flex items-center gap-2">
+                    <i class="fas fa-calendar-check"></i>Записаться
+                </a>     
             </div>
         </div>
     </nav>
-    
-    <!-- Мобильное меню -->
-    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
-    <div class="mobile-menu">
-        <div class="mb-6 pb-4 border-b border-white/10">
-            <span class="text-2xl font-bold text-indigo-400">Меню</span>
-        </div>
-        
-        <a href="#" class="nav-item" onclick="closeMobileMenu()">На главную</a>
-        
-        <div class="mobile-dropdown">
-            <div class="nav-item dropdown-toggle" onclick="toggleMobileDropdown(this)">
-                Портфолио
-                <i class="fas fa-chevron-down text-sm transition-transform"></i>
-            </div>
-            <div class="mobile-dropdown-content">
-                <a href="life-style.html" onclick="closeMobileMenu()">Life style</a>
-                <a href="love-story.html" onclick="closeMobileMenu()">Love story</a>
-                <a href="portrait.html" onclick="closeMobileMenu()">Portrait</a>
-                <a href="street-style.html" onclick="closeMobileMenu()">Street style</a>
-                <a href="silhouette.html" onclick="closeMobileMenu()">Silhouette</a>
-                <a href="collage-style.html" onclick="closeMobileMenu()">Collage style</a>
-            </div>
-        </div>
-        
-        <a href="#prices" class="nav-item" onclick="closeMobileMenu()">Прайсы</a>
-        <a href="#contacts" class="nav-item" onclick="closeMobileMenu()">Контакты</a>
-        
-        <div class="mt-8 pt-6 border-t border-white/10">
-            <div class="flex flex-col gap-4">
-                <a href="https://wa.me/79991758033" target="_blank" class="flex items-center gap-3 text-gray-300 hover:text-indigo-400">
-                    <i class="fab fa-whatsapp text-2xl text-green-500"></i>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="flex items-center gap-3 text-gray-300 hover:text-indigo-400">
-                    <i class="fab fa-telegram text-2xl text-blue-400"></i>
-                    <span>Telegram</span>
-                </a>
-                <a href="https://vk.com/zenka675" target="_blank" class="flex items-center gap-3 text-gray-300 hover:text-indigo-400">
-                    <i class="fab fa-vk text-2xl text-blue-400"></i>
-                    <span>ВКонтакте</span>
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- 1. ОБЛОЖКА -->
-    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden py-16 md:py-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden py-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         
-        <div class="text-center px-4 max-w-6xl relative z-10 w-full">
-            <!-- Фото профиля -->
-            <div class="flex justify-center mb-4 md:mb-6 fade-in-up">
-                <div class="w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-3 md:border-4 border-indigo-500/50 shadow-2xl hover:border-indigo-500 transition-all duration-500 hover:scale-105">
+        <div class="text-center px-4 max-w-6xl relative z-10">
+            <!-- Увеличенная фотография по центру - ЕЩЁ МЕНЬШЕ -->
+            <div class="flex justify-center mb-6 fade-in-up mt-[-20px] md:mt-[-30px]">
+                <!-- Родительский контейнер с ещё меньшим размером -->
+                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-indigo-500/50 shadow-2xl hover:border-indigo-500 transition-all duration-500 hover:scale-105">
+                    <!-- Изображение с object-cover (центрирует и заполняет круг) -->
                     <img src="images/PhotoProfil.jpg" alt="Евгений Буевич" class="w-full h-full object-cover" style="object-position: center 25%;">
+                    <!-- style="object-position: center 25%;" - поднимает изображение выше -->
                 </div>
             </div>
             
-            <span class="inline-block px-3 py-1 md:px-4 md:py-1.5 glass-card rounded-full text-xs md:text-sm mb-3 md:mb-4 fade-in-up delay-1">
-                <i class="fas fa-crown text-yellow-500 mr-1 md:mr-2"></i>
+            <span class="inline-block px-4 py-1 glass-card rounded-full text-sm mb-4 fade-in-up delay-1">
+                <i class="fas fa-crown text-yellow-500 mr-2"></i>
                 Профессиональный фотограф
             </span>
             
-            <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-2 md:mb-4 fade-in-up delay-2 px-2">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 fade-in-up delay-2">
                 Евгений <span class="text-indigo-400 neon-text">Буевич</span>
             </h1>
             
-            <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-4 md:mb-8 max-w-2xl mx-auto text-gray-300 fade-in-up delay-3 px-4">
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-300 fade-in-up delay-3">
                 Ваша история в моем объективе
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center fade-in-up delay-4 px-4 max-w-md mx-auto sm:max-w-none">
-                <a href="#portfolio" class="glass-card text-white px-6 py-2.5 md:px-8 md:py-3 rounded-lg font-medium hover:bg-white/20 transition text-sm md:text-base">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up delay-4">
+                <a href="#portfolio" class="glass-card text-white px-8 py-3 rounded-lg font-medium hover:bg-white/20 transition">
                     <i class="fas fa-images mr-2"></i>
                     Смотреть портфолио
                 </a>          
             </div>
             
             <!-- Статистика -->
-            <div class="flex justify-center gap-4 sm:gap-6 md:gap-8 mt-8 md:mt-12 fade-in-up delay-4 px-2">
+            <div class="flex justify-center gap-8 mt-12 fade-in-up delay-4">
                 <div class="text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400">100+</div>
-                    <div class="text-xs sm:text-sm text-gray-400">Фотосессий</div>
+                    <div class="text-3xl font-bold text-indigo-400">100+</div>
+                    <div class="text-sm text-gray-400">Фотосессий</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400">20+</div>
-                    <div class="text-xs sm:text-sm text-gray-400">Клиентов</div>
+                    <div class="text-3xl font-bold text-indigo-400">20+</div>
+                    <div class="text-sm text-gray-400">Клиентов</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-400">3 года</div>
-                    <div class="text-xs sm:text-sm text-gray-400">Опыта</div>
+                    <div class="text-3xl font-bold text-indigo-400">3 года</div>
+                    <div class="text-sm text-gray-400">Опыта</div>
                 </div>
             </div>
         </div>
         
-        <!-- Стрелка вниз (скрываем на очень маленьких экранах) -->
-        <div class="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
-            <div class="w-5 h-8 md:w-6 md:h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-2 md:h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+        <!-- Стрелка вниз -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
             </div>
         </div>
     </section>
 
-    <!-- 2. ПОРТФОЛИО СЛАЙДЕР -->
-    <section id="portfolio" class="py-12 md:py-20">
+    <!-- 2. ПОРТФОЛИО СЛАЙДЕР (БЕЗ ПОДПИСЕЙ) -->
+    <section id="portfolio" class="py-20">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Мои работы</h2>
-                <p class="text-sm sm:text-base text-gray-400 px-4">Нажмите на стиль в меню, чтобы увидеть больше работ</p>
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Мои работы</h2>
+                <p class="text-gray-400">Нажмите на стиль в меню "Портфолио", чтобы увидеть больше работ по каждому направлению</p>
             </div>
             
             <!-- СЛАЙДЕР -->
-            <div class="slider-container glass-card mx-2 sm:mx-4 md:mx-auto">
+            <div class="slider-container glass-card">
                 <div class="slider-wrapper" id="sliderWrapper">
-                    <div class="slide"><img src="images/1.png" alt="Фото 1" loading="lazy"></div>
-                    <div class="slide"><img src="images/2.jpg" alt="Фото 2" loading="lazy"></div>
-                    <div class="slide"><img src="images/3.jpg" alt="Фото 3" loading="lazy"></div>
-                    <div class="slide"><img src="images/4.jpg" alt="Фото 4" loading="lazy"></div>
-                    <div class="slide"><img src="images/5.jpg" alt="Фото 5" loading="lazy"></div>
-                    <div class="slide"><img src="images/6.jpg" alt="Фото 6" loading="lazy"></div>
-                    <div class="slide"><img src="images/7.jpg" alt="Фото 7" loading="lazy"></div>
-                    <div class="slide"><img src="images/8.jpg" alt="Фото 8" loading="lazy"></div>
-                    <div class="slide"><img src="images/9.jpg" alt="Фото 9" loading="lazy"></div>
-                    <div class="slide"><img src="images/10.jpg" alt="Фото 10" loading="lazy"></div>
-                    <div class="slide"><img src="images/11.jpg" alt="Фото 11" loading="lazy"></div>
+                    <!-- Слайд 1 -->
+                    <div class="slide">
+                        <img src="images/1.png" alt="Фото 1">
+                    </div>
+                    <!-- Слайд 2 -->
+                    <div class="slide">
+                        <img src="images/2.jpg" alt="Фото 2">
+                    </div>
+                    <!-- Слайд 3 -->
+                    <div class="slide">
+                        <img src="images/3.jpg" alt="Фото 3">
+                    </div>
+                    <!-- Слайд 4 -->
+                    <div class="slide">
+                        <img src="images/4.jpg" alt="Фото 4">
+                    </div>
+                    <!-- Слайд 5 -->
+                    <div class="slide">
+                        <img src="images/5.jpg" alt="Фото 5">
+                    </div>
+                    <!-- Слайд 6 -->
+                    <div class="slide">
+                        <img src="images/6.jpg" alt="Фото 6">
+                    </div>                 
+                    <!-- Слайд 7 -->
+                    <div class="slide">
+                        <img src="images/7.jpg" alt="Фото 7">
+                    </div>
+                    <!-- Слайд 8 -->
+                    <div class="slide">
+                        <img src="images/8.jpg" alt="Фото 8">
+                    </div>
+                    <!-- Слайд 9 -->
+                    <div class="slide">
+                        <img src="images/9.jpg" alt="Фото 9">
+                    </div>
+                    <!-- Слайд 10 -->
+                    <div class="slide">
+                        <img src="images/10.jpg" alt="Фото 10">
+                    </div>
+                    <!-- Слайд 11 -->
+                    <div class="slide">
+                        <img src="images/11.jpg" alt="Фото 11">
+                    </div>                
                 </div>
                 
-                <button class="slider-btn prev" onclick="prevSlide()" aria-label="Предыдущий слайд">
+                <!-- Кнопки навигации -->
+                <button class="slider-btn prev" onclick="prevSlide()">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="slider-btn next" onclick="nextSlide()" aria-label="Следующий слайд">
+                <button class="slider-btn next" onclick="nextSlide()">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
             
+            <!-- Точки навигации -->
             <div class="slider-dots" id="sliderDots"></div>
         </div>
     </section>
 
-    <!-- 3. ПРАЙСЫ -->
-    <section id="prices" class="py-12 md:py-20">
+    <!-- 3. СТИЛИ СЪЕМКИ (ПРАЙСЫ) -->
+    <section id="prices" class="py-20">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Прайсы</h2>
-                <p class="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Прайсы</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
                     Выберите подходящий стиль для вашей фотосессии
                 </p>
             </div>
@@ -890,194 +1114,229 @@
                 <!-- Life style -->
                 <div class="price-card">
                     <div class="card-image-container">
-                        <img src="images/life style.jpg" alt="Life style" class="card-image" loading="lazy">
+                        <img src="images/life style.jpg" alt="Life style" class="card-image">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Life style</h3>
-                        <p class="card-description">Повседневная жизнь, стиль фотосессии направленная на повседневные дела людей</p>
-                        <div class="price-tag">4 000₽/час</div>
+                        <p class="card-description">
+                            Стиль жизни – повседневная жизнь, стиль фотосессии направленная на повседневные дела людей
+                        </p>
+                        <div class="price-tag">4 000₽ за час</div>
                         <div class="prepayment">Предоплата 2 500₽</div>
                         <div class="includes">
                             <div class="includes-title">В стоимость входит:</div>
                             <ul class="includes-list">
                                 <li><i class="fas fa-check"></i> Аренда помещения</li>
-                                <li><i class="fas fa-check"></i> Помощь в позировании</li>
-                                <li><i class="fas fa-check"></i> 20-30 фото обработки</li>
-                                <li><i class="fas fa-check"></i> Все исходники</li>
+                                <li><i class="fas fa-check"></i> Помощь в позировании и подбор образа</li>
+                                <li><i class="fas fa-check"></i> 20-30 фото обработки и ретуши</li>
+                                <li><i class="fas fa-check"></i> Музыка на съемке по желанию</li>
+                                <li><i class="fas fa-check"></i> Обработка фотографий</li> 
+                                <li><i class="fas fa-check"></i> Предоставление интересных локаций</li>
+                                <li><i class="fas fa-check"></i> Все исходники отправляются через облачное хранилище </li>
                             </ul>
                         </div>
-                        <a href="life-style.html" class="btn-detail">Смотреть работы</a>
+                        <a href="life-style.html" class="btn-detail">Смотреть работы Life style</a>
                     </div>
                 </div>
 
                 <!-- Love story -->
                 <div class="price-card">
                     <div class="card-image-container">
-                        <img src="images/love story.jpg" alt="Love story" class="card-image" loading="lazy">
+                        <img src="images/love story.jpg" alt="Love story" class="card-image">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Love story</h3>
-                        <p class="card-description">Романтические отношения между парами и их повседневная жизнь</p>
-                        <div class="price-tag">5 000₽/час</div>
+                        <p class="card-description">
+                            Стиль который показывает романтические отношения между парами и их повседневную жизнь
+                        </p>
+                        <div class="price-tag">5 000₽ за час</div>
                         <div class="prepayment">Предоплата 2 500₽</div>
                         <div class="includes">
                             <div class="includes-title">В стоимость входит:</div>
                             <ul class="includes-list">
                                 <li><i class="fas fa-check"></i> Аренда помещения</li>
-                                <li><i class="fas fa-check"></i> Помощь в позировании</li>
-                                <li><i class="fas fa-check"></i> 20-30 фото обработки</li>
-                                <li><i class="fas fa-check"></i> Все исходники</li>
+                                <li><i class="fas fa-check"></i> Помощь в позировании и подбор образа</li>
+                                <li><i class="fas fa-check"></i> 20-30 фото обработки и ретуши</li>
+                                <li><i class="fas fa-check"></i> Музыка на съемке по желанию</li>
+                                <li><i class="fas fa-check"></i> Обработка фотографий</li> 
+                                <li><i class="fas fa-check"></i> Предоставление интересных локаций</li>
+                                <li><i class="fas fa-check"></i> Все исходники отправляются через облачное хранилище </li>
                             </ul>
                         </div>
-                        <a href="love-story.html" class="btn-detail">Смотреть работы</a>
+                        <a href="love-story.html" class="btn-detail">Смотреть работы Love story</a>
                     </div>
                 </div>
 
                 <!-- Портрет -->
                 <div class="price-card">
                     <div class="card-image-container">
-                        <img src="images/Portrait.jpg" alt="Портрет" class="card-image" loading="lazy">
+                        <img src="images/Portrait.jpg" alt="Портрет" class="card-image">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Портрет</h3>
-                        <p class="card-description">Универсальный стиль для личного архива</p>
-                        <div class="price-tag">4 000₽/час</div>
+                        <p class="card-description">
+                            Универсальный стиль фотосессии который предназначен для личного архива
+                        </p>
+                        <div class="price-tag">4 000₽ за час</div>
                         <div class="prepayment">Предоплата 2 500₽</div>
                         <div class="includes">
                             <div class="includes-title">В стоимость входит:</div>
                             <ul class="includes-list">
                                 <li><i class="fas fa-check"></i> Аренда помещения</li>
-                                <li><i class="fas fa-check"></i> Помощь в позировании</li>
-                                <li><i class="fas fa-check"></i> 20-30 фото обработки</li>
-                                <li><i class="fas fa-check"></i> Все исходники</li>
+                                <li><i class="fas fa-check"></i> Помощь в позировании и подбор образа</li>
+                                <li><i class="fas fa-check"></i> 20-30 фото обработки и ретуши</li>                                               
+                                <li><i class="fas fa-check"></i> Музыка на съемке по желанию</li>
+                                <li><i class="fas fa-check"></i> Обработка фотографий</li>
+                                <li><i class="fas fa-check"></i> Предоставление интересных локаций</li> 
+                                <li><i class="fas fa-check"></i> Все исходники отправляются через облачное хранилище </li>
                             </ul>
                         </div>
-                        <a href="portrait.html" class="btn-detail">Смотреть работы</a>
+                        <a href="portrait.html" class="btn-detail">Смотреть работы Портрет</a>
                     </div>
                 </div>
 
                 <!-- Street style -->
                 <div class="price-card">
                     <div class="card-image-container">
-                        <img src="images/street style.jpg" alt="Street style" class="card-image" loading="lazy">
+                        <img src="images/street style.jpg" alt="Street style" class="card-image">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Street style</h3>
-                        <p class="card-description">Образ стиля в повседневной городской жизни</p>
-                        <div class="price-tag">4 000₽/час</div>
+                        <p class="card-description">
+                            Стиль образа который показывает образ стиля в повседневной городской жизни человека. Ключевыми особенностями в данной фотосессии является стиль одежды и подобранной локации для фотосессии
+                        </p>
+                        <div class="price-tag">4 000₽ за час</div>
                         <div class="prepayment">Предоплата 2 500₽</div>
                         <div class="includes">
                             <div class="includes-title">В стоимость входит:</div>
                             <ul class="includes-list">
                                 <li><i class="fas fa-check"></i> Аренда помещения</li>
-                                <li><i class="fas fa-check"></i> Помощь в позировании</li>
-                                <li><i class="fas fa-check"></i> 20-30 фото обработки</li>
-                                <li><i class="fas fa-check"></i> Все исходники</li>
+                                <li><i class="fas fa-check"></i> Помощь в позировании и подбор образа</li>
+                                <li><i class="fas fa-check"></i> 20-30 фото обработки и ретуши</li>
+                                <li><i class="fas fa-check"></i> Музыка на съемке по желанию</li>
+                                <li><i class="fas fa-check"></i> Обработка фотографий</li> 
+                                <li><i class="fas fa-check"></i> Предоставление интересных локаций</li>
+                                <li><i class="fas fa-check"></i> Все исходники отправляются через облачное хранилище </li>
                             </ul>
                         </div>
-                        <a href="street-style.html" class="btn-detail">Смотреть работы</a>
+                        <a href="street-style.html" class="btn-detail">Смотреть работы Street style</a>
                     </div>
                 </div>
 
-                <!-- Силуэтная -->
+                <!-- Силуэтная фотография -->
                 <div class="price-card">
                     <div class="card-image-container">
-                        <img src="images/silhouette.jpg" alt="Силуэтная" class="card-image" loading="lazy">
+                        <img src="images/silhouette.jpg" alt="Силуэтная фотография" class="card-image">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Силуэтная</h3>
-                        <p class="card-description">Темный объект на ярком фоне</p>
-                        <div class="price-tag">4 000₽/час</div>
+                        <h3 class="card-title">Силуэтная фотография</h3>
+                        <p class="card-description">
+                            Стиль в котором создающий темный, детализированный образ объекта на ярком, светлом фоне
+                        </p>
+                        <div class="price-tag">4 000₽ за час</div>
                         <div class="prepayment">Предоплата 2 500₽</div>
                         <div class="includes">
                             <div class="includes-title">В стоимость входит:</div>
                             <ul class="includes-list">
                                 <li><i class="fas fa-check"></i> Аренда помещения</li>
-                                <li><i class="fas fa-check"></i> Помощь в позировании</li>
-                                <li><i class="fas fa-check"></i> 20-30 фото обработки</li>
-                                <li><i class="fas fa-check"></i> Все исходники</li>
+                                <li><i class="fas fa-check"></i> Помощь в позировании и подбор образа</li>
+                                <li><i class="fas fa-check"></i> 20-30 фото обработки и ретуши</li>
+                                <li><i class="fas fa-check"></i> Музыка на съемке по желанию</li>                             
+                                <li><i class="fas fa-check"></i> Обработка фотографий</li>
+                                <li><i class="fas fa-check"></i> Предоставление интересных локаций</li>
+                                <li><i class="fas fa-check"></i> Все исходники отправляются через облачное хранилище </li>
                             </ul>
                         </div>
-                        <a href="silhouette.html" class="btn-detail">Смотреть работы</a>
+                        <a href="silhouette.html" class="btn-detail">Смотреть работы Силуэтная съемка</a>
                     </div>
                 </div>
 
                 <!-- Collage style -->
                 <div class="price-card">
                     <div class="card-image-container">
-                        <img src="images/collage style.jpg" alt="Collage style" class="card-image" loading="lazy">
+                        <img src="images/collage style.jpg" alt="Collage style" class="card-image">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Collage style</h3>
-                        <p class="card-description">Сочетание фрагментов для единого образа</p>
-                        <div class="price-tag">500₽/фото</div>
+                        <p class="card-description">
+                            Стиль который сочетает в себе фрагменты различных материалов, изображений, формы, текстур и шрифтов для создания единого образа фотографии
+                        </p>
+                        <div class="price-tag">500₽ за обработанное фото</div>
                         <div class="prepayment">Предоплата 250₽</div>
                         <div class="includes">
                             <div class="includes-title">В стоимость входит:</div>
                             <ul class="includes-list">
                                 <li><i class="fas fa-check"></i> Аренда помещения</li>
-                                <li><i class="fas fa-check"></i> Помощь в позировании</li>
-                                <li><i class="fas fa-check"></i> Обработка фото</li>
-                                <li><i class="fas fa-check"></i> Все исходники</li>
+                                <li><i class="fas fa-check"></i> Помощь в позировании и подбор образа</li>
+                                <li><i class="fas fa-check"></i> 20-30 фото обработки и ретуши</li>
+                                <li><i class="fas fa-check"></i> Музыка на съемке по желанию</li>                             
+                                <li><i class="fas fa-check"></i> Обработка фотографий</li>                                
+                                <li><i class="fas fa-check"></i> Предоставление интересных локаций</li>
+                                <li><i class="fas fa-check"></i> Все исходники отправляются через облачное хранилище </li>
                             </ul>
                         </div>
-                        <a href="collage-style.html" class="btn-detail">Смотреть работы</a>
+                        <a href="collage-style.html" class="btn-detail">Смотреть работы Collage style</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. КОНТАКТЫ -->
-    <footer id="contacts" class="py-12 md:py-16">
+    <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
+    <footer id="contacts" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Связь со мной</h2>
-                <p class="text-sm sm:text-base text-gray-400">Напишите мне в удобном мессенджере</p>
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Связь со мной</h2>
+                <p class="text-gray-400">Напишите мне в удобном мессенджере или соцсети</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
-                <div class="glass-card p-4 md:p-6 rounded-xl">
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center text-white">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center text-white">
                         <i class="fas fa-camera mr-2 text-indigo-400"></i>
                         Евгений Буевич
                     </h3>
-                    <p class="text-sm md:text-base text-gray-400 mb-3 md:mb-4">Профессиональная фотосъемка</p>
-                    <p class="text-sm md:text-base text-gray-300"><i class="fas fa-phone mr-2 text-indigo-400"></i> +7 (999) 175-80-33</p>
+                    <p class="text-gray-400 mb-4">Профессиональная фотосъемка для частных клиентов и бизнеса.</p>
+                    <div class="space-y-2">
+                        <p class="text-gray-300"><i class="fas fa-phone mr-2 text-indigo-400"></i> +7 (999) 175-80-33</p>
+                    </div>
                 </div>
                 
-                <div class="glass-card p-4 md:p-6 rounded-xl">
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Мессенджеры</h3>
-                    <div class="space-y-2 md:space-y-3">
-                        <a href="https://wa.me/79991758033" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition p-2 rounded-lg text-sm md:text-base">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-4 text-white">Мессенджеры</h3>
+                    <div class="space-y-3">
+                        <a href="https://wa.me/79991758033" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition group p-2 rounded-lg">
                             <i class="fab fa-whatsapp mr-3 text-green-500 text-xl w-6"></i>
                             <span>WhatsApp</span>
+                            <span class="ml-auto text-xs text-gray-500">+7 (999) 175-80-33</span>
                         </a>
                         
-                        <a href="https://t.me/Svytoi_tap0k" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition p-2 rounded-lg text-sm md:text-base">
+                        <a href="https://t.me/Svytoi_tap0k" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition group p-2 rounded-lg">
                             <i class="fab fa-telegram mr-3 text-blue-400 text-xl w-6"></i>
                             <span>Telegram</span>
+                            <span class="ml-auto text-xs text-gray-500">@Svytoi_tap0k</span>
                         </a>
                     </div>
                 </div>
                 
-                <div class="glass-card p-4 md:p-6 rounded-xl">
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Соцсети</h3>
-                    <div class="space-y-2 md:space-y-3">
-                        <a href="#" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition p-2 rounded-lg text-sm md:text-base">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-4 text-white">Соцсети</h3>
+                    <div class="space-y-3">
+                        <a href="#" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition group p-2 rounded-lg">
                             <i class="fab fa-instagram mr-3 text-pink-500 text-xl w-6"></i>
                             <span>Instagram</span>
                         </a>
                         
-                        <a href="https://vk.com/zenka675" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition p-2 rounded-lg text-sm md:text-base">
+                        <a href="https://vk.com/zenka675" target="_blank" class="flex items-center text-gray-300 hover:text-indigo-400 transition group p-2 rounded-lg">
                             <i class="fab fa-vk mr-3 text-blue-400 text-xl w-6"></i>
                             <span>ВКонтакте</span>
+                            <span class="ml-auto text-xs text-gray-500">zenka675</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <div class="mt-8 md:mt-12 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm border-t border-white/10">
+            <div class="mt-12 pt-8 text-center text-gray-400 text-sm">
                 <p>© 2026 Евгений Буевич. Все права защищены.</p>
             </div>
         </div>
@@ -1091,8 +1350,8 @@
         const sliderWrapper = document.getElementById('sliderWrapper');
         const dotsContainer = document.getElementById('sliderDots');
 
+        // Динамически создаем точки для слайдов
         function createDots() {
-            if (!dotsContainer) return;
             dotsContainer.innerHTML = '';
             for (let i = 0; i < slides.length; i++) {
                 const dot = document.createElement('span');
@@ -1111,10 +1370,8 @@
         }
 
         function updateSlider() {
-            if (sliderWrapper) {
-                sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-                updateDots();
-            }
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateDots();
         }
 
         function nextSlide() {
@@ -1132,57 +1389,8 @@
             updateSlider();
         }
 
-        // Автопрокрутка слайдера (останавливаем при наведении)
-        let autoSlide = setInterval(nextSlide, 5000);
-        
-        const sliderContainer = document.querySelector('.slider-container');
-        if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlide));
-            sliderContainer.addEventListener('mouseleave', () => {
-                autoSlide = setInterval(nextSlide, 5000);
-            });
-            
-            // Для touch устройств
-            sliderContainer.addEventListener('touchstart', () => clearInterval(autoSlide));
-            sliderContainer.addEventListener('touchend', () => {
-                autoSlide = setInterval(nextSlide, 5000);
-            });
-        }
-
-        // Мобильное меню
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.mobile-overlay');
-            const btn = document.querySelector('.mobile-menu-btn');
-            
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Анимация кнопки
-            if (btn) {
-                btn.classList.toggle('active');
-            }
-        }
-        
-        function closeMobileMenu() {
-            const menu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.mobile-overlay');
-            const btn = document.querySelector('.mobile-menu-btn');
-            
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-            if (btn) btn.classList.remove('active');
-        }
-        
-        function toggleMobileDropdown(element) {
-            const dropdown = element.closest('.mobile-dropdown');
-            const icon = element.querySelector('i');
-            
-            dropdown.classList.toggle('active');
-            if (icon) {
-                icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-            }
-        }
+        // Автоматическое перелистывание каждые 5 секунд
+        setInterval(nextSlide, 5000);
 
         // Плавный скролл к якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1191,68 +1399,8 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
-                    closeMobileMenu(); // Закрываем меню после клика
                 }
             });
-        });
-
-        // Адаптация для десктоп дропдауна
-        function setupDesktopDropdown() {
-            const dropdown = document.querySelector('.dropdown');
-            if (window.innerWidth > 768 && dropdown) {
-                dropdown.addEventListener('mouseenter', () => {
-                    const content = dropdown.querySelector('.dropdown-content');
-                    if (content) content.style.display = 'block';
-                });
-                
-                dropdown.addEventListener('mouseleave', () => {
-                    const content = dropdown.querySelector('.dropdown-content');
-                    if (content) content.style.display = 'none';
-                });
-            }
-        }
-        
-        setupDesktopDropdown();
-        window.addEventListener('resize', setupDesktopDropdown);
-        
-        // Закрытие меню при нажатии на ссылки
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Предотвращаем скролл body при открытом меню
-        const menu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.mobile-overlay');
-        
-        if (menu && overlay) {
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.target.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-            
-            observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
-        }
-
-        // Touch-оптимизация для кнопок
-        const buttons = document.querySelectorAll('.slider-btn, .btn-detail, .glass-card');
-        buttons.forEach(btn => {
-            btn.addEventListener('touchstart', function(e) {
-                this.style.opacity = '0.8';
-            });
-            
-            btn.addEventListener('touchend', function(e) {
-                this.style.opacity = '1';
-            });
-        });
-
-        // Инициализация при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            updateSlider();
         });
     </script>
 </body>
