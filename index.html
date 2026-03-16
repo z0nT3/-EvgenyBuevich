@@ -2,25 +2,80 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Евгений Буевич | Фотограф</title>
     <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Подключаем иконки -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        html { scroll-behavior: smooth; }
-    
-        /* ОСНОВНОЙ ФОН - ТВОЕ ИЗОБРАЖЕНИЕ ИЗ ПАПКИ IMAGES */
+        html { 
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+        
         body {
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            /* Исправление для мобильных устройств */
+            height: 100%;
+        }
+        
+        /* УНИВЕРСАЛЬНЫЙ ФОН ДЛЯ ВСЕХ УСТРОЙСТВ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('images/background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #fff;
-            min-height: 100vh;
-            position: relative;
+            z-index: -1;
+            
+            /* Улучшение качества */
+            image-rendering: -webkit-optimize-contrast;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        /* СПЕЦИАЛЬНО ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+        @media (max-width: 768px) {
+            body::before {
+                position: absolute; /* Меняем с fixed на absolute для мобильных */
+                background-attachment: scroll;
+                height: 100%;
+                width: 100%;
+            }
+            
+            /* Дополнительный фикс для iOS */
+            @supports (-webkit-touch-callout: none) {
+                body::before {
+                    background-attachment: scroll;
+                    height: 100vh;
+                }
+            }
+        }
+        
+        /* ДЛЯ ПЛАНШЕТОВ */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            body::before {
+                position: fixed;
+                background-attachment: fixed;
+            }
+        }
+        
+        /* Альтернативный вариант для очень старых мобильных браузеров */
+        .old-mobile body {
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; /* Вместо fixed */
         }
         
         /* ОБЛОЖКА - УБИРАЕМ ФОН, ОСТАВЛЯЕМ ТОЛЬКО ГРАДИЕНТ */
@@ -398,35 +453,33 @@
         
         /* УБИРАЕМ ВСЕ РАМКИ И ФОНЫ У КОНТАКТОВ */
         #contacts {
-            border: none !important; /* Убираем верхнюю рамку */
+            border: none !important;
         }
         
         #contacts .glass-card {
-            background: transparent !important; /* Полностью прозрачный фон */
-            backdrop-filter: none !important; /* Убираем размытие */
-            border: none !important; /* Убираем рамки */
-            box-shadow: none !important; /* Убираем тени */
-            padding: 20px 0 !important; /* Оставляем только отступы */
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 20px 0 !important;
         }
         
         #contacts .glass-card:hover {
             background: transparent !important;
-            transform: none !important; /* Убираем поднятие при наведении */
+            transform: none !important;
             border: none !important;
             box-shadow: none !important;
         }
         
-        /* Убираем фон у заголовков и текста */
         #contacts h3, 
         #contacts p, 
         #contacts a,
         #contacts .text-gray-400,
         #contacts .text-gray-300 {
             background: transparent;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Добавляем тень для читаемости */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
-        /* Делаем ссылки в контактах более заметными */
         #contacts a {
             transition: all 0.3s ease;
         }
@@ -436,16 +489,15 @@
             color: #4f46e5 !important;
         }
         
-        /* Убираем фон у иконок */
         #contacts i {
             background: transparent;
         }
         
-        /* Убираем разделительную линию внизу */
         #contacts .border-t {
             border-top: none !important;
         }
 
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 768px) {
             .slide img {
                 max-height: 400px;
@@ -482,21 +534,36 @@
             .dropdown.active .dropdown-content {
                 display: block;
             }
+            
+            /* Убираем фиксированный фон на мобильных */
+            body {
+                background-attachment: scroll;
+            }
+        }
+        
+        /* Фикс для iOS Safari */
+        @supports (-webkit-touch-callout: none) {
+            body::before {
+                background-attachment: scroll;
+            }
+            
+            @media (max-width: 768px) {
+                body::before {
+                    position: absolute;
+                }
+            }
         }
     </style>
 </head>
 <body class="font-sans">
 
-
     <!-- ШАПКА (Навигация) с современными стрелочками -->
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- ПУСТОЙ DIV чтобы сохранить отступы (можно удалить если не нужен) -->
                 <div></div>
                 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
                     <div class="dropdown">
                         <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
                             Портфолио
@@ -515,13 +582,11 @@
                         </div>
                     </div>
 
-                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
                     <a href="#" class="text-gray-300 hover:text-white transition relative group">
                         На главную
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
                     </a>
                     
-                    <!-- СТИЛЫ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
                     <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
                         Прайсы
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -551,13 +616,9 @@
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         
         <div class="text-center px-4 max-w-6xl relative z-10">
-            <!-- Увеличенная фотография по центру - ЕЩЁ МЕНЬШЕ -->
             <div class="flex justify-center mb-6 fade-in-up mt-[-20px] md:mt-[-30px]">
-                <!-- Родительский контейнер с ещё меньшим размером -->
                 <div class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-indigo-500/50 shadow-2xl hover:border-indigo-500 transition-all duration-500 hover:scale-105">
-                    <!-- Изображение с object-cover (центрирует и заполняет круг) -->
                     <img src="images/PhotoProfil.jpg" alt="Евгений Буевич" class="w-full h-full object-cover" style="object-position: center 25%;">
-                    <!-- style="object-position: center 25%;" - поднимает изображение выше -->
                 </div>
             </div>
             
@@ -581,7 +642,6 @@
                 </a>          
             </div>
             
-            <!-- Статистика -->
             <div class="flex justify-center gap-8 mt-12 fade-in-up delay-4">
                 <div class="text-center">
                     <div class="text-3xl font-bold text-indigo-400">100+</div>
@@ -598,7 +658,6 @@
             </div>
         </div>
         
-        <!-- Стрелка вниз -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
                 <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
@@ -606,7 +665,7 @@
         </div>
     </section>
 
-    <!-- 2. ПОРТФОЛИО СЛАЙДЕР (БЕЗ ПОДПИСЕЙ) -->
+    <!-- 2. ПОРТФОЛИО СЛАЙДЕР -->
     <section id="portfolio" class="py-20">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
@@ -614,56 +673,21 @@
                 <p class="text-gray-400">Нажмите на стиль в меню "Портфолио", чтобы увидеть больше работ по каждому направлению</p>
             </div>
             
-            <!-- СЛАЙДЕР -->
             <div class="slider-container glass-card">
                 <div class="slider-wrapper" id="sliderWrapper">
-                    <!-- Слайд 1 -->
-                    <div class="slide">
-                        <img src="images/1.png" alt="Фото 1">
-                    </div>
-                    <!-- Слайд 2 -->
-                    <div class="slide">
-                        <img src="images/2.jpg" alt="Фото 2">
-                    </div>
-                    <!-- Слайд 3 -->
-                    <div class="slide">
-                        <img src="images/3.jpg" alt="Фото 3">
-                    </div>
-                    <!-- Слайд 4 -->
-                    <div class="slide">
-                        <img src="images/4.jpg" alt="Фото 4">
-                    </div>
-                    <!-- Слайд 5 -->
-                    <div class="slide">
-                        <img src="images/5.jpg" alt="Фото 5">
-                    </div>
-                    <!-- Слайд 6 -->
-                    <div class="slide">
-                        <img src="images/6.jpg" alt="Фото 6">
-                    </div>                 
-                    <!-- Слайд 7 -->
-                    <div class="slide">
-                        <img src="images/7.jpg" alt="Фото 7">
-                    </div>
-                    <!-- Слайд 8 -->
-                    <div class="slide">
-                        <img src="images/8.jpg" alt="Фото 8">
-                    </div>
-                    <!-- Слайд 9 -->
-                    <div class="slide">
-                        <img src="images/9.jpg" alt="Фото 9">
-                    </div>
-                    <!-- Слайд 10 -->
-                    <div class="slide">
-                        <img src="images/10.jpg" alt="Фото 10">
-                    </div>
-                    <!-- Слайд 11 -->
-                    <div class="slide">
-                        <img src="images/11.jpg" alt="Фото 11">
-                    </div>                
+                    <div class="slide"><img src="images/1.png" alt="Фото 1"></div>
+                    <div class="slide"><img src="images/2.jpg" alt="Фото 2"></div>
+                    <div class="slide"><img src="images/3.jpg" alt="Фото 3"></div>
+                    <div class="slide"><img src="images/4.jpg" alt="Фото 4"></div>
+                    <div class="slide"><img src="images/5.jpg" alt="Фото 5"></div>
+                    <div class="slide"><img src="images/6.jpg" alt="Фото 6"></div>                 
+                    <div class="slide"><img src="images/7.jpg" alt="Фото 7"></div>
+                    <div class="slide"><img src="images/8.jpg" alt="Фото 8"></div>
+                    <div class="slide"><img src="images/9.jpg" alt="Фото 9"></div>
+                    <div class="slide"><img src="images/10.jpg" alt="Фото 10"></div>
+                    <div class="slide"><img src="images/11.jpg" alt="Фото 11"></div>                
                 </div>
                 
-                <!-- Кнопки навигации -->
                 <button class="slider-btn prev" onclick="prevSlide()">
                     <i class="fas fa-chevron-left"></i>
                 </button>
@@ -672,7 +696,6 @@
                 </button>
             </div>
             
-            <!-- Точки навигации -->
             <div class="slider-dots" id="sliderDots"></div>
         </div>
     </section>
@@ -859,7 +882,7 @@
         </div>
     </section>
 
-    <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
+    <!-- 5. КОНТАКТЫ -->
     <footer id="contacts" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
@@ -927,7 +950,6 @@
         const sliderWrapper = document.getElementById('sliderWrapper');
         const dotsContainer = document.getElementById('sliderDots');
 
-        // Динамически создаем точки для слайдов
         function createDots() {
             dotsContainer.innerHTML = '';
             for (let i = 0; i < slides.length; i++) {
@@ -966,10 +988,8 @@
             updateSlider();
         }
 
-        // Автоматическое перелистывание каждые 5 секунд
         setInterval(nextSlide, 5000);
 
-        // Плавный скролл к якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -979,6 +999,11 @@
                 }
             });
         });
+
+        // Определяем мобильное устройство для дополнительных фиксов
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.classList.add('old-mobile');
+        }
     </script>
 </body>
 </html>
