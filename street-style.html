@@ -7,18 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ОСНОВНЫЕ СТИЛИ */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background: #0a0a0a; color: #fff; font-family: system-ui, sans-serif; }
-        .animated-bg { background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0d0d0d, #1f1f1f); background-size: 400% 400%; animation: gradient 15s ease infinite; }
-        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .hero-bg { position: relative; overflow: hidden; }
-        .hero-bg::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1554048612-b76aec5f23eb?w=1600') center/cover; filter: brightness(0.4); transform: scale(1.1); animation: zoom 20s infinite alternate; }
-        @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.1); } }
-        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 3s infinite; }
-        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+           /* ОСНОВНОЙ ФОН - ТВОЕ ИЗОБРАЖЕНИЕ ИЗ ПАПКИ IMAGES */
+        body {
+            background-image: url('images/Fon.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            width: 100%;
+            font-family: system-ui, sans-serif;
+        }
         
         /* СЕТКА РОВНО 3 КОЛОНКИ */
         .gallery-grid {
@@ -46,8 +49,8 @@
         
         .gallery-item:hover {
             transform: translateY(-5px);
-            border-color: rgba(79, 70, 229, 0.5);
-            box-shadow: 0 15px 25px rgba(79, 70, 229, 0.3);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
             background: rgba(30, 30, 30, 0.9);
             z-index: 10;
         }
@@ -94,7 +97,7 @@
             max-height: 90%;
             object-fit: contain;
             border-radius: 8px;
-            box-shadow: 0 0 30px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
         
         .lightbox-close {
@@ -115,7 +118,7 @@
         }
         
         .lightbox-close:hover {
-            background: rgba(79, 70, 229, 0.8);
+            background: rgba(212, 175, 55, 0.8);
             transform: rotate(90deg);
         }
         
@@ -142,7 +145,7 @@
         
         .lightbox-prev:hover,
         .lightbox-next:hover {
-            background: rgba(79, 70, 229, 0.8);
+            background: rgba(212, 175, 55, 0.8);
             transform: translateY(-50%) scale(1.1);
         }
         
@@ -160,8 +163,8 @@
         
         .price-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(79, 70, 229, 0.5);
-            box-shadow: 0 30px 60px rgba(79, 70, 229, 0.3);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3);
         }
         
         .card-image-container { 
@@ -188,14 +191,14 @@
         .card-title { 
             font-size: 1.8rem; 
             font-weight: bold; 
-            background: linear-gradient(to right, #fff, #a5b4fc); 
+            background: linear-gradient(to right, #fff, #F0E68C); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
         
         .price-tag { 
             font-size: 1.8rem; 
-            color: #4f46e5; 
+            color: #D4AF37; 
             margin-bottom: 10px;
         }
         
@@ -225,15 +228,15 @@
         }
         
         .includes-list li i {
-            color: #4f46e5;
+            color: #D4AF37;
             font-size: 1rem;
         }
         
         .btn-order, .btn-back { 
             display: inline-block; 
-            background: rgba(79,70,229,0.2); 
-            border: 1px solid rgba(79,70,229,0.5); 
-            color: #a5b4fc; 
+            background: rgba(212, 175, 55, 0.2); 
+            border: 1px solid rgba(212, 175, 55, 0.5); 
+            color: #F0E68C; 
             padding: 10px 20px; 
             border-radius: 10px; 
             text-decoration: none; 
@@ -244,7 +247,7 @@
         }
         
         .btn-order:hover, .btn-back:hover { 
-            background: rgba(79,70,229,0.4); 
+            background: rgba(212, 175, 55, 0.4); 
             color: white; 
         }
         
@@ -252,7 +255,7 @@
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content { display: none; position: absolute; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); min-width: 200px; border-radius: 10px; top: 100%; left: 50%; transform: translateX(-50%); }
         .dropdown-content a { color: #d1d5db; padding: 10px 14px; display: block; text-decoration: none; font-size: 0.95rem; }
-        .dropdown-content a:hover { background: rgba(79,70,229,0.2); color: white; padding-left: 20px; }
+        .dropdown-content a:hover { background: rgba(212, 175, 55, 0.2); color: white; padding-left: 20px; }
         .dropdown:hover .dropdown-content { display: block; }
         
         /* Адаптация для планшетов - 2 колонки */
@@ -290,7 +293,7 @@
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                     </a>
                     <div class="dropdown-content">
                         <a href="life-style.html">Life style</a>
@@ -305,7 +308,7 @@
                 <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
                 <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
                     На главную
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                 </a>
                 
                 <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
@@ -314,7 +317,7 @@
                     <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                 </a>
                 
                 <!-- СВЯЗЬ СО МНОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
@@ -323,21 +326,22 @@
                     <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                     </svg>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 transition-all group-hover:w-full"></span>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                 </a>            
             </div>
             
-            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition shadow-lg flex items-center gap-2">
+            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
                 <i class="fas fa-calendar-check"></i>Записаться
             </a>     
         </div>
     </div>
 </nav>
+
     <section class="hero-bg h-[30vh] flex items-center justify-center text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
         <div class="text-center px-4 relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold mb-2">
-                <span class="text-indigo-400">Street style</span>
+                <span class="text-[#D4AF37]">Street style</span>
             </h1>
             <p class="text-lg text-gray-300">Street style – мода и стиль на городских улицах</p>
         </div>
@@ -348,13 +352,12 @@
             <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
     </div>
-    </div>
     </section>
 
     <section class="py-12 animated-bg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
+                <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] text-transparent bg-clip-text">
                     Галерея Street style
                 </h2>
             </div>
@@ -435,66 +438,66 @@
         <img id="lightbox-img" src="" alt="">
     </div>
 
- <!-- 5. КОНТАКТЫ -->
-    <footer id="contacts" class="bg-black py-16 border-t border-white/10">
+ <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
+    <footer id="contacts" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">Связь со мной</h2>
-                <p class="text-gray-400">Напишите мне в удобном мессенджере или соцсети</p>
+                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] text-transparent bg-clip-text">Связь со мной</h2>
+                <p class="text-white-400">Напишите мне в удобном мессенджере или соцсети</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="glass-card p-6 rounded-xl">
+                <div class="p-6">
                     <h3 class="text-xl font-bold mb-4 flex items-center text-white">
-                        <i class="fas fa-camera mr-2 text-indigo-400"></i>
+                        <i class="fas fa-camera mr-2 text-[#D4AF37]"></i>
                         Евгений Буевич
                     </h3>
-                    <p class="text-gray-400 mb-4">Профессиональная фотосъемка для частных клиентов и бизнеса.</p>
+                    <p class="text-white-400 mb-4">Профессиональная фотосъемка для частных клиентов и бизнеса.</p>
                     <div class="space-y-2">
-                        <p class="text-gray-300"><i class="fas fa-phone mr-2 text-indigo-400"></i> +7 (999) 175-80-33</p>
+                        <p class="text-white-300"><i class="fas fa-phone mr-2 text-[#D4AF37]"></i> +7 (999) 175-80-33</p>
                     </div>
                 </div>
                 
-                <div class="glass-card p-6 rounded-xl">
+                <div class="p-6">
                     <h3 class="text-xl font-bold mb-4 text-white">Мессенджеры</h3>
                     <div class="space-y-3">
-                        <a href="https://wa.me/79991758033" target="_blank" class="flex items-center text-gray-300 hover:text-white transition group p-2 rounded-lg hover:bg-white/5">
+                        <a href="https://wa.me/79991758033" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
                             <i class="fab fa-whatsapp mr-3 text-green-500 text-xl w-6"></i>
                             <span>WhatsApp</span>
-                            <span class="ml-auto text-xs text-gray-500">+7 (999) 175-80-33</span>
+                            <span class="ml-auto text-xs text-white-500">+7 (999) 175-80-33</span>
                         </a>
                         
-                        <a href="https://t.me/Svytoi_tap0k" target="_blank" class="flex items-center text-gray-300 hover:text-white transition group p-2 rounded-lg hover:bg-white/5">
+                        <a href="https://t.me/Svytoi_tap0k" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
                             <i class="fab fa-telegram mr-3 text-blue-400 text-xl w-6"></i>
                             <span>Telegram</span>
-                            <span class="ml-auto text-xs text-gray-500">@Svytoi_tap0k</span>
+                            <span class="ml-auto text-xs text-white-500">@Svytoi_tap0k</span>
                         </a>
                     </div>
                 </div>
                 
-                <div class="glass-card p-6 rounded-xl">
+                <div class="p-6">
                     <h3 class="text-xl font-bold mb-4 text-white">Соцсети</h3>
                     <div class="space-y-3">
-                        <a href="#" target="_blank" class="flex items-center text-gray-300 hover:text-white transition group p-2 rounded-lg hover:bg-white/5">
+                        <a href="#" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
                             <i class="fab fa-instagram mr-3 text-pink-500 text-xl w-6"></i>
                             <span>Instagram</span>
+                            <span class="ml-auto text-xs text-white-500">zenka77582020</span>                  
                         </a>
                         
-                        <a href="https://vk.com/zenka675" target="_blank" class="flex items-center text-gray-300 hover:text-white transition group p-2 rounded-lg hover:bg-white/5">
+                        <a href="https://vk.com/zenka675" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
                             <i class="fab fa-vk mr-3 text-blue-400 text-xl w-6"></i>
                             <span>ВКонтакте</span>
-                            <span class="ml-auto text-xs text-gray-500">zenka675</span>
+                            <span class="ml-auto text-xs text-white-500">zenka675</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <div class="mt-12 pt-8 border-t border-white/10 text-center text-gray-400 text-sm">
+            <div class="mt-12 pt-8 text-center text-white-400 text-sm">
                 <p>© 2026 Евгений Буевич. Все права защищены.</p>
             </div>
         </div>
     </footer>
-
     <script>
         function createStars() {
             const starsContainer = document.getElementById('stars');
