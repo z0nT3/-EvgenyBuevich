@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Евгений Буевич | Love Story съемка</title>
+    <title>Евгений Буевич | Street style съемка</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-
-   /* ОСНОВНОЙ ФОН - ТВОЕ ИЗОБРАЖЕНИЕ ИЗ ПАПКИ IMAGES */
+        
+           /* ОСНОВНОЙ ФОН - ТВОЕ ИЗОБРАЖЕНИЕ ИЗ ПАПКИ IMAGES */
         body {
             background-image: url('images/Fon.jpg');
             background-size: cover;
@@ -22,12 +22,16 @@
             width: 100%;
             font-family: system-ui, sans-serif;
         }
+
+
         
-        /* СЕТКА РОВНО 3 КОЛОНКИ */
+        /* УМЕНЬШЕННАЯ СЕТКА В 2 РАЗА */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Всегда 3 колонки */
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Было 350px, стало 180px */
+            grid-auto-rows: minmax(150px, auto); /* Было 300px, стало 150px */
+            gap: 12px; /* Уменьшили отступы */
+            grid-auto-flow: dense;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -35,7 +39,7 @@
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 10px;
             background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -43,34 +47,41 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            aspect-ratio: 1/1; /* Квадратные ячейки */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
         
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: rgba(212, 175, 55, 0.5);
-            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
-            background: rgba(30, 30, 30, 0.9);
+            box-shadow: 0 10px 15px rgba(212, 175, 55, 0.2);
+            background: rgba(30, 30, 30, 0.8);
             z-index: 10;
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Фото заполняют квадрат */
+            object-fit: cover;
             background: #0a0a0a;
-            transition: transform 0.4s ease;
+            transition: transform 0.3s ease;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         
-        /* Для фото, которые лучше показывать целиком */
-        .gallery-item.contain img {
-            object-fit: contain;
-            padding: 10px;
+        /* Классы для разных размеров ячеек */
+        .gallery-item.wide { 
+            grid-column: span 2; 
+        }
+        
+        .gallery-item.tall { 
+            grid-row: span 2; 
+        }
+        
+        .gallery-item.big { 
+            grid-column: span 2; 
+            grid-row: span 2; 
         }
         
         /* ЛАЙТБОКС */
@@ -177,7 +188,7 @@
         
         .card-image { 
             max-width: 100%; 
-            max-height: 200px;
+            max-height: 200px; /* Уменьшили с 300px до 200px */
             width: auto; 
             height: auto; 
             object-fit: contain; 
@@ -258,19 +269,26 @@
         .dropdown-content a:hover { background: rgba(212, 175, 55, 0.2); color: white; padding-left: 20px; }
         .dropdown:hover .dropdown-content { display: block; }
         
-        /* Адаптация для планшетов - 2 колонки */
+        /* Адаптация для мобильных */
         @media (max-width: 768px) {
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-auto-rows: minmax(120px, auto);
+                gap: 8px;
             }
         }
         
-        /* Адаптация для телефонов - 1 колонка */
         @media (max-width: 480px) {
             .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            
+            .gallery-item.wide,
+            .gallery-item.tall,
+            .gallery-item.big {
+                grid-column: span 1;
+                grid-row: span 1;
             }
         }
     </style>
@@ -278,7 +296,7 @@
 <body>
     <div class="stars" id="stars"></div>
 
- <!-- ШАПКА (Навигация) с современными стрелочками -->
+  <!-- ШАПКА (Навигация) с современными стрелочками -->
 <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
@@ -313,7 +331,7 @@
                 
                 <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
                 <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                    Прайсы
+                   Прайсы
                     <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
@@ -341,9 +359,9 @@
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
         <div class="text-center px-4 relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold mb-2">
-                <span class="text-[#D4AF37]">Love story</span>
+                <span class="text-[#D4AF37]">Street style</span>
             </h1>
-            <p class="text-lg text-gray-300">Love story – романтика пар в повседневности</p>
+            <p class="text-lg text-gray-300">Street style – городской стиль и уличная мода</p>
         </div>
     </section>
 
@@ -351,13 +369,13 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-8">
                 <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] text-transparent bg-clip-text">
-                    Галерея Love story
+                    Галерея Street style
                 </h2>
             </div>
 
-            <!-- СЕТКА РОВНО 3 КОЛОНКИ -->
+            <!-- УМЕНЬШЕННАЯ ГАЛЕРЕЯ -->
             <div class="gallery-grid" id="gallery">
-                <!-- Первый ряд - 3 фото -->
+                <!-- Все фото теперь меньшего размера -->
                 <div class="gallery-item" onclick="openLightbox(0)">
                     <img src="images/street style.jpg" alt="Street 1">
                 </div>
@@ -367,8 +385,6 @@
                 <div class="gallery-item" onclick="openLightbox(2)">
                     <img src="images/Portrait.jpg" alt="Street 3">
                 </div>
-                
-                <!-- Второй ряд - 3 фото -->
                 <div class="gallery-item" onclick="openLightbox(3)">
                     <img src="images/life style.jpg" alt="Street 4">
                 </div>
@@ -378,8 +394,6 @@
                 <div class="gallery-item" onclick="openLightbox(5)">
                     <img src="images/collage style.jpg" alt="Street 6">
                 </div>
-                
-                <!-- Третий ряд - 3 фото -->
                 <div class="gallery-item" onclick="openLightbox(6)">
                     <img src="images/1.png" alt="Street 7">
                 </div>
@@ -389,8 +403,6 @@
                 <div class="gallery-item" onclick="openLightbox(8)">
                     <img src="images/3.jpg" alt="Street 9">
                 </div>
-                
-                <!-- Четвертый ряд - 3 фото -->
                 <div class="gallery-item" onclick="openLightbox(9)">
                     <img src="images/4.jpg" alt="Street 10">
                 </div>
@@ -400,8 +412,6 @@
                 <div class="gallery-item" onclick="openLightbox(11)">
                     <img src="images/6.jpg" alt="Street 12">
                 </div>
-                
-                <!-- Пятый ряд - 3 фото -->
                 <div class="gallery-item" onclick="openLightbox(12)">
                     <img src="images/7.jpg" alt="Street 13">
                 </div>
@@ -411,8 +421,6 @@
                 <div class="gallery-item" onclick="openLightbox(14)">
                     <img src="images/9.jpg" alt="Street 15">
                 </div>
-                
-                <!-- Шестой ряд - последние 2 фото, но сетка выровняет -->
                 <div class="gallery-item" onclick="openLightbox(15)">
                     <img src="images/10.jpg" alt="Street 16">
                 </div>
@@ -431,7 +439,7 @@
         <img id="lightbox-img" src="" alt="">
     </div>
 
-         <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
+     <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
     <footer id="contacts" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
