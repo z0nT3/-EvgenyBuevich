@@ -594,7 +594,7 @@
         @media (max-width: 768px) {
             /* Шапка */
             nav .space-x-8 {
-                display: none;
+                display: none; /* Скрываем обычное меню */
             }
             
             nav .flex {
@@ -760,6 +760,63 @@
             /* Анимации */
             .fade-in-up {
                 animation-duration: 0.8s;
+            }
+            
+            /* Бургер меню */
+            .mobile-menu-btn {
+                display: block !important;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 20px;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 40;
+            }
+            
+            .mobile-menu.active {
+                transform: translateY(0);
+            }
+            
+            .mobile-menu a {
+                display: block;
+                padding: 15px 20px;
+                color: #d1d5db;
+                text-decoration: none;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu a:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu a:hover {
+                background: rgba(212, 175, 55, 0.2);
+                color: white;
+                padding-left: 30px;
+            }
+            
+            .mobile-menu .dropdown-content-mobile {
+                display: none;
+                padding-left: 20px;
+            }
+            
+            .mobile-menu .dropdown-content-mobile.show {
+                display: block;
+            }
+            
+            .mobile-menu .dropdown-content-mobile a {
+                font-size: 1rem;
+                padding: 12px 20px;
             }
         }
         
@@ -1036,13 +1093,15 @@
 <body class="font-sans">
 
 
-    <!-- ШАПКА (Навигация) с современными стрелочками -->
+    <!-- ШАПКА (Навигация) с современными стрелочками и бургер-меню -->
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- ПУСТОЙ DIV чтобы сохранить отступы (можно удалить если не нужен) -->
-                <div></div>
+                <!-- Логотип или пустой div для отступа -->
+                <div class="text-[#D4AF37] font-bold text-xl hidden sm:block">Евгений Буевич</div>
+                <div class="sm:hidden"></div> <!-- Пустой блок на мобильных для отступа -->
                 
+                <!-- Десктопное меню (скрывается на мобильных) -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
                     <div class="dropdown">
@@ -1086,11 +1145,40 @@
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                     </a>            
                 </div>
+
+                <!-- Бургер-меню кнопка (видна только на мобильных) -->
+                <button id="mobileMenuBtn" class="mobile-menu-btn hidden text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+
                 <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
                     <i class="fas fa-calendar-check"></i>Записаться
                 </a>
-                </a>     
             </div>
+        </div>
+
+        <!-- Мобильное меню (выпадающее) -->
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="#" onclick="toggleMobileMenu()">На главную</a>
+            
+            <!-- Портфолио с выпадающим списком -->
+            <div class="relative">
+                <a href="#portfolio" onclick="toggleDropdownMobile(event)" class="flex justify-between items-center">
+                    Портфолио
+                    <i class="fas fa-chevron-down text-sm"></i>
+                </a>
+                <div id="portfolioDropdown" class="dropdown-content-mobile">
+                    <a href="life-style.html" onclick="toggleMobileMenu()">Life style</a>
+                    <a href="love-story.html" onclick="toggleMobileMenu()">Love story</a>
+                    <a href="portrait.html" onclick="toggleMobileMenu()">Portrait</a>
+                    <a href="street-style.html" onclick="toggleMobileMenu()">Street style</a>
+                    <a href="silhouette.html" onclick="toggleMobileMenu()">Silhouette</a>
+                    <a href="collage-style.html" onclick="toggleMobileMenu()">Collage style</a>
+                </div>
+            </div>
+            
+            <a href="#prices" onclick="toggleMobileMenu()">Прайсы</a>
+            <a href="#contacts" onclick="toggleMobileMenu()">Связь со мной</a>
         </div>
     </nav>
 
@@ -1544,6 +1632,67 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Бургер-меню для мобильных устройств
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        // Показываем кнопку бургер-меню только на мобильных
+        function checkMobile() {
+            if (window.innerWidth <= 768) {
+                mobileMenuBtn.style.display = 'block';
+            } else {
+                mobileMenuBtn.style.display = 'none';
+                mobileMenu.classList.remove('active');
+            }
+        }
+        
+        window.addEventListener('load', checkMobile);
+        window.addEventListener('resize', checkMobile);
+        
+        // Открытие/закрытие мобильного меню
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            // Меняем иконку на крестик когда меню открыто
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+        
+        // Функция для закрытия мобильного меню
+        window.toggleMobileMenu = function() {
+            mobileMenu.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.className = 'fas fa-bars';
+        };
+        
+        // Функция для открытия/закрытия выпадающего списка в мобильном меню
+        window.toggleDropdownMobile = function(event) {
+            event.preventDefault();
+            const dropdown = document.getElementById('portfolioDropdown');
+            dropdown.classList.toggle('show');
+            
+            // Меняем стрелочку
+            const icon = event.currentTarget.querySelector('i');
+            if (dropdown.classList.contains('show')) {
+                icon.className = 'fas fa-chevron-up text-sm';
+            } else {
+                icon.className = 'fas fa-chevron-down text-sm';
+            }
+        };
+        
+        // Закрываем мобильное меню при клике на ссылку
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Не закрываем меню, если это ссылка на портфолио (она открывает дропдаун)
+                if (this.getAttribute('href') !== '#portfolio') {
+                    toggleMobileMenu();
                 }
             });
         });
