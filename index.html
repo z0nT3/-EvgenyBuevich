@@ -548,6 +548,123 @@
             padding-left: 20px;
         }
 
+        /* ========== МОБИЛЬНЫЙ СПИСОК УСЛУГ ========== */
+        @media (max-width: 768px) {
+            .price-grid {
+                display: none;
+            }
+            
+            .mobile-price-list {
+                display: block !important;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-price-list {
+                display: none !important;
+            }
+        }
+        
+        .mobile-price-list {
+            margin-top: 30px;
+        }
+        
+        .mobile-price-item {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-price-item:hover {
+            transform: translateX(5px);
+            border-color: #D4AF37;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .mobile-price-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #D4AF37;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .mobile-price-price {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .mobile-price-description {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .mobile-price-features {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #d1d5db;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 10px;
+        }
+        
+        .mobile-price-features i {
+            color: #D4AF37;
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .mobile-price-features span {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .mobile-price-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #F0E68C;
+            text-decoration: none;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .mobile-price-link:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+        
+        .mobile-price-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .mobile-price-icon i {
+            font-size: 1.2rem;
+            color: #D4AF37;
+        }
+        
+        .mobile-price-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
         @media (max-width: 768px) {
             .story-container {
                 flex-direction: column;
@@ -594,12 +711,12 @@
         @media (max-width: 768px) {
             /* Шапка */
             nav .space-x-8 {
-                display: none; /* Скрываем обычное меню */
+                display: none;
             }
             
-           nav .flex {
-                        justify-content: space-between; /* Возвращаем как было */
-                     }
+            nav .flex {
+                justify-content: space-between;
+            }
             
             nav .px-8 {
                 padding-left: 16px;
@@ -679,9 +796,9 @@
                 font-size: 2.2rem;
             }
             
-            /* Прайсы */
+            /* Прайсы - скрыты на мобильных */
             .price-grid {
-                grid-template-columns: 1fr;
+                display: none;
             }
             
             .card-image-container {
@@ -760,63 +877,6 @@
             /* Анимации */
             .fade-in-up {
                 animation-duration: 0.8s;
-            }
-            
-            /* Бургер меню */
-            .mobile-menu-btn {
-                display: block !important;
-            }
-            
-            .mobile-menu {
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(10px);
-                padding: 20px;
-                border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 40;
-            }
-            
-            .mobile-menu.active {
-                transform: translateY(0);
-            }
-            
-            .mobile-menu a {
-                display: block;
-                padding: 15px 20px;
-                color: #d1d5db;
-                text-decoration: none;
-                font-size: 1.1rem;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                transition: all 0.3s ease;
-            }
-            
-            .mobile-menu a:last-child {
-                border-bottom: none;
-            }
-            
-            .mobile-menu a:hover {
-                background: rgba(212, 175, 55, 0.2);
-                color: white;
-                padding-left: 30px;
-            }
-            
-            .mobile-menu .dropdown-content-mobile {
-                display: none;
-                padding-left: 20px;
-            }
-            
-            .mobile-menu .dropdown-content-mobile.show {
-                display: block;
-            }
-            
-            .mobile-menu .dropdown-content-mobile a {
-                font-size: 1rem;
-                padding: 12px 20px;
             }
         }
         
@@ -1093,117 +1153,61 @@
 <body class="font-sans">
 
 
-   <!-- ШАПКА (Навигация) с современными стрелочками и бургер-меню -->
-<nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-            <!-- Бургер-меню кнопка (видна только на мобильных) - ПЕРЕНЕСЕНА В НАЧАЛО -->
-            <button id="mobileMenuBtn" class="mobile-menu-btn hidden text-white text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <!-- Логотип (скрыт на мобильных) -->
-            <div class="text-[#D4AF37] font-bold text-xl hidden sm:block">Евгений Буевич</div>
-            
-            <!-- Десктопное меню (скрывается на мобильных) -->
-            <div class="hidden md:flex space-x-8 items-center">
-                <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО -->
-                <div class="dropdown">
-                    <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-                        Портфолио
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    <!-- ШАПКА (Навигация) с современными стрелочками -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- ПУСТОЙ DIV чтобы сохранить отступы (можно удалить если не нужен) -->
+                <div></div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                    <div class="dropdown">
+                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
+                            Портфолио
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="life-style.html">Life style</a>
+                            <a href="love-story.html">Love story</a>
+                            <a href="portrait.html">Portrait</a>
+                            <a href="street-style.html">Street style</a>
+                            <a href="silhouette.html">Silhouette</a>
+                            <a href="collage-style.html">Collage style</a>
+                        </div>
+                    </div>
+
+                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
+                    <a href="#" class="text-gray-300 hover:text-white transition relative group">
+                        На главную
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>
+                    
+                    <!-- СТИЛЫ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                    <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                        Прайсы
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                     </a>
-                    <div class="dropdown-content">
-                        <a href="life-style.html">Life style</a>
-                        <a href="love-story.html">Love story</a>
-                        <a href="portrait.html">Portrait</a>
-                        <a href="street-style.html">Street style</a>
-                        <a href="silhouette.html">Silhouette</a>
-                        <a href="collage-style.html">Collage style</a>
-                    </div>
+                    
+                    <a href="#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                        Связь со мной
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>            
                 </div>
-
-                <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ -->
-                <a href="#" class="text-gray-300 hover:text-white transition relative group">
-                    На главную
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
+                    <i class="fas fa-calendar-check"></i>Записаться
                 </a>
-                
-                <!-- ПРАЙСЫ -->
-                <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                    Прайсы
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                </a>
-                
-                <!-- СВЯЗЬ СО МНОЙ -->
-                <a href="#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                    Связь со мной
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                </a>            
+                </a>     
             </div>
-
-            <!-- Кнопка "Записаться" справа -->
-            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
-                <i class="fas fa-calendar-check"></i>Записаться
-            </a>
-        </div>
-    </div>
-
-    <!-- Мобильное меню (выпадающее) -->
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="#" onclick="toggleMobileMenu()">На главную</a>
-        
-        <!-- Портфолио с выпадающим списком -->
-        <div class="relative">
-            <a href="#portfolio" onclick="toggleDropdownMobile(event)" class="flex justify-between items-center">
-                Портфолио
-                <i class="fas fa-chevron-down text-sm"></i>
-            </a>
-            <div id="portfolioDropdown" class="dropdown-content-mobile">
-                <a href="life-style.html" onclick="toggleMobileMenu()">Life style</a>
-                <a href="love-story.html" onclick="toggleMobileMenu()">Love story</a>
-                <a href="portrait.html" onclick="toggleMobileMenu()">Portrait</a>
-                <a href="street-style.html" onclick="toggleMobileMenu()">Street style</a>
-                <a href="silhouette.html" onclick="toggleMobileMenu()">Silhouette</a>
-                <a href="collage-style.html" onclick="toggleMobileMenu()">Collage style</a>
-            </div>
-        </div>
-        
-        <a href="#prices" onclick="toggleMobileMenu()">Прайсы</a>
-        <a href="#contacts" onclick="toggleMobileMenu()">Связь со мной</a>
-    </div>
-</nav>
-        <!-- Мобильное меню (выпадающее) -->
-        <div id="mobileMenu" class="mobile-menu">
-            <a href="#" onclick="toggleMobileMenu()">На главную</a>
-            
-            <!-- Портфолио с выпадающим списком -->
-            <div class="relative">
-                <a href="#portfolio" onclick="toggleDropdownMobile(event)" class="flex justify-between items-center">
-                    Портфолио
-                    <i class="fas fa-chevron-down text-sm"></i>
-                </a>
-                <div id="portfolioDropdown" class="dropdown-content-mobile">
-                    <a href="life-style.html" onclick="toggleMobileMenu()">Life style</a>
-                    <a href="love-story.html" onclick="toggleMobileMenu()">Love story</a>
-                    <a href="portrait.html" onclick="toggleMobileMenu()">Portrait</a>
-                    <a href="street-style.html" onclick="toggleMobileMenu()">Street style</a>
-                    <a href="silhouette.html" onclick="toggleMobileMenu()">Silhouette</a>
-                    <a href="collage-style.html" onclick="toggleMobileMenu()">Collage style</a>
-                </div>
-            </div>
-            
-            <a href="#prices" onclick="toggleMobileMenu()">Прайсы</a>
-            <a href="#contacts" onclick="toggleMobileMenu()">Связь со мной</a>
         </div>
     </nav>
 
@@ -1367,6 +1371,7 @@
                 </p>
             </div>
 
+            <!-- ПК версия - карточки (остается без изменений) -->
             <div class="price-grid">
                 <!-- Life style -->
                 <div class="price-card">
@@ -1536,6 +1541,141 @@
                     </div>
                 </div>
             </div>
+
+            <!-- МОБИЛЬНАЯ ВЕРСИЯ - СПИСОК -->
+            <div class="mobile-price-list">
+                <!-- Life style -->
+                <div class="mobile-price-item">
+                    <div class="mobile-price-header">
+                        <div class="mobile-price-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <div>
+                            <div class="mobile-price-title">Life style</div>
+                            <div class="mobile-price-price">4 000₽/час</div>
+                        </div>
+                    </div>
+                    <div class="mobile-price-description">
+                        Стиль жизни – повседневная жизнь, стиль фотосессии направленная на повседневные дела людей
+                    </div>
+                    <div class="mobile-price-features">
+                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
+                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
+                        <span><i class="fas fa-check"></i> Помощь в позировании</span>
+                    </div>
+                    <a href="life-style.html" class="mobile-price-link">Смотреть работы →</a>
+                </div>
+
+                <!-- Love story -->
+                <div class="mobile-price-item">
+                    <div class="mobile-price-header">
+                        <div class="mobile-price-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <div class="mobile-price-title">Love story</div>
+                            <div class="mobile-price-price">5 000₽/час</div>
+                        </div>
+                    </div>
+                    <div class="mobile-price-description">
+                        Стиль который показывает романтические отношения между парами
+                    </div>
+                    <div class="mobile-price-features">
+                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
+                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
+                        <span><i class="fas fa-check"></i> Аренда помещения</span>
+                    </div>
+                    <a href="love-story.html" class="mobile-price-link">Смотреть работы →</a>
+                </div>
+
+                <!-- Portrait -->
+                <div class="mobile-price-item">
+                    <div class="mobile-price-header">
+                        <div class="mobile-price-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div class="mobile-price-title">Portrait</div>
+                            <div class="mobile-price-price">4 000₽/час</div>
+                        </div>
+                    </div>
+                    <div class="mobile-price-description">
+                        Универсальный стиль фотосессии для личного архива
+                    </div>
+                    <div class="mobile-price-features">
+                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
+                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
+                        <span><i class="fas fa-check"></i> Помощь в позировании</span>
+                    </div>
+                    <a href="portrait.html" class="mobile-price-link">Смотреть работы →</a>
+                </div>
+
+                <!-- Street style -->
+                <div class="mobile-price-item">
+                    <div class="mobile-price-header">
+                        <div class="mobile-price-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div>
+                            <div class="mobile-price-title">Street style</div>
+                            <div class="mobile-price-price">4 000₽/час</div>
+                        </div>
+                    </div>
+                    <div class="mobile-price-description">
+                        Образ стиля в повседневной городской жизни
+                    </div>
+                    <div class="mobile-price-features">
+                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
+                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
+                        <span><i class="fas fa-check"></i> Подбор локаций</span>
+                    </div>
+                    <a href="street-style.html" class="mobile-price-link">Смотреть работы →</a>
+                </div>
+
+                <!-- Silhouette -->
+                <div class="mobile-price-item">
+                    <div class="mobile-price-header">
+                        <div class="mobile-price-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div>
+                            <div class="mobile-price-title">Silhouette</div>
+                            <div class="mobile-price-price">4 000₽/час</div>
+                        </div>
+                    </div>
+                    <div class="mobile-price-description">
+                        Темный силуэт на ярком фоне
+                    </div>
+                    <div class="mobile-price-features">
+                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
+                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
+                        <span><i class="fas fa-check"></i> Аренда помещения</span>
+                    </div>
+                    <a href="silhouette.html" class="mobile-price-link">Смотреть работы →</a>
+                </div>
+
+                <!-- Collage style -->
+                <div class="mobile-price-item">
+                    <div class="mobile-price-header">
+                        <div class="mobile-price-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <div class="mobile-price-title">Collage style</div>
+                            <div class="mobile-price-price">500₽/фото</div>
+                        </div>
+                    </div>
+                    <div class="mobile-price-description">
+                        Сочетание фрагментов различных материалов и текстур
+                    </div>
+                    <div class="mobile-price-features">
+                        <span><i class="fas fa-check"></i> Предоплата 250₽</span>
+                        <span><i class="fas fa-check"></i> Обработка фото</span>
+                        <span><i class="fas fa-check"></i> Помощь в позировании</span>
+                    </div>
+                    <a href="collage-style.html" class="mobile-price-link">Смотреть работы →</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1657,67 +1797,6 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-        
-        // Бургер-меню для мобильных устройств
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        // Показываем кнопку бургер-меню только на мобильных
-        function checkMobile() {
-            if (window.innerWidth <= 768) {
-                mobileMenuBtn.style.display = 'block';
-            } else {
-                mobileMenuBtn.style.display = 'none';
-                mobileMenu.classList.remove('active');
-            }
-        }
-        
-        window.addEventListener('load', checkMobile);
-        window.addEventListener('resize', checkMobile);
-        
-        // Открытие/закрытие мобильного меню
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            // Меняем иконку на крестик когда меню открыто
-            const icon = this.querySelector('i');
-            if (mobileMenu.classList.contains('active')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-bars';
-            }
-        });
-        
-        // Функция для закрытия мобильного меню
-        window.toggleMobileMenu = function() {
-            mobileMenu.classList.remove('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.className = 'fas fa-bars';
-        };
-        
-        // Функция для открытия/закрытия выпадающего списка в мобильном меню
-        window.toggleDropdownMobile = function(event) {
-            event.preventDefault();
-            const dropdown = document.getElementById('portfolioDropdown');
-            dropdown.classList.toggle('show');
-            
-            // Меняем стрелочку
-            const icon = event.currentTarget.querySelector('i');
-            if (dropdown.classList.contains('show')) {
-                icon.className = 'fas fa-chevron-up text-sm';
-            } else {
-                icon.className = 'fas fa-chevron-down text-sm';
-            }
-        };
-        
-        // Закрываем мобильное меню при клике на ссылку
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Не закрываем меню, если это ссылка на портфолио (она открывает дропдаун)
-                if (this.getAttribute('href') !== '#portfolio') {
-                    toggleMobileMenu();
                 }
             });
         });
