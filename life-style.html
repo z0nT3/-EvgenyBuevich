@@ -580,10 +580,7 @@
             .desktop-menu {
                 display: none !important;
             }
-        }
-        
-        /* Адаптация для планшетов - 2 колонки */
-        @media (max-width: 768px) {
+            
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -681,73 +678,73 @@
         </div>
     </div>
 
-    <!-- ШАПКА (Навигация) с современными стрелочками -->
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Левая часть: бургер (только мобилки) -->
-                <div class="flex items-center">
-                    <!-- Кнопка бургер для мобильных -->
-                    <div class="burger-btn md:hidden" id="burgerBtn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+ <!-- ШАПКА (Навигация) с современными стрелочками -->
+<nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            <!-- Левая часть: бургер (только мобилки) -->
+            <div class="flex items-center">
+                <!-- Кнопка бургер для мобильных -->
+                <div class="burger-btn md:hidden" id="burgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                
-                <!-- Десктопное меню - по центру -->
-                <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-menu">
-                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-                    <div class="dropdown">
-                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-                            Портфолио
-                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="life-style.html">Life style</a>
-                            <a href="love-story.html">Love story</a>
-                            <a href="portrait.html">Portrait</a>
-                            <a href="street-style.html">Street style</a>
-                            <a href="silhouette.html">Silhouette</a>
-                            <a href="collage-style.html">Collage style</a>
-                        </div>
-                    </div>
-
-                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
-                    <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
-                        На главную
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
-                    <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Прайсы
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- СВЯЗЬ СО МНОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
-                    <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Связь со мной
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>            
-                </div>
-                
-                <!-- Правая часть: кнопка Записаться -->
-                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
-                    <i class="fas fa-calendar-check"></i>Записаться
-                </a>     
             </div>
+            
+            <!-- Десктопное меню - по центру -->
+            <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-menu">
+                <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                <div class="dropdown">
+                    <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
+                        Портфолио
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="life-style.html">Life style</a>
+                        <a href="love-story.html">Love story</a>
+                        <a href="portrait.html">Portrait</a>
+                        <a href="street-style.html">Street style</a>
+                        <a href="silhouette.html">Silhouette</a>
+                        <a href="collage-style.html">Collage style</a>
+                    </div>
+                </div>
+
+                <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
+                <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
+                    На главную
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>
+                
+                <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
+                <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                    Прайсы
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>
+                
+                <!-- СВЯЗЬ СО МНОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
+                <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                    Связь со мной
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>            
+            </div>
+            
+            <!-- Правая часть: кнопка Записаться -->
+            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
+                <i class="fas fa-calendar-check"></i>Записаться
+            </a>     
         </div>
-    </nav>
+    </div>
+</nav>
 
     <section class="hero-bg h-[30vh] flex items-center justify-center text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
@@ -846,21 +843,7 @@
     </footer>
 
     <script>
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 2 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
-            }
-        }
-        createStars();
-
+        
         const images = [
             'images/life-style.jpg',
         ];
@@ -904,7 +887,6 @@
         const portfolioSubmenuToggle = document.getElementById('portfolioSubmenuToggle');
         const portfolioSubmenu = document.getElementById('portfolioSubmenu');
 
-        // Открытие меню
         function openMenu() {
             mobileMenu.classList.add('active');
             menuOverlay.classList.add('active');
@@ -912,7 +894,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Закрытие меню
         function closeMenu() {
             mobileMenu.classList.remove('active');
             menuOverlay.classList.remove('active');
@@ -920,12 +901,10 @@
             document.body.style.overflow = '';
         }
 
-        // Обработчики для открытия/закрытия
         burgerBtn.addEventListener('click', openMenu);
         menuClose.addEventListener('click', closeMenu);
         menuOverlay.addEventListener('click', closeMenu);
 
-        // Закрытие при клике на ссылку в меню
         document.querySelectorAll('.menu-link, .submenu-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 if (this.id !== 'portfolioSubmenuToggle') {
@@ -934,14 +913,12 @@
             });
         });
 
-        // Тоггл подменю
         portfolioSubmenuToggle.addEventListener('click', function(e) {
             e.preventDefault();
             portfolioSubmenu.classList.toggle('active');
             this.classList.toggle('active');
         });
 
-        // Закрытие по Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
                 closeMenu();
