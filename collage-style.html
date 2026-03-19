@@ -310,62 +310,23 @@
                     Галерея Collage style
                 </h2>
             </div>
-
-            <!-- СЕТКА КАК В ГАЛЕРЕЕ ТЕЛЕФОНА -->
-            <div class="gallery-grid" id="gallery">
-                <!-- Все ваши фото -->
-                <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="images/collage style.jpg" alt="Collage 1">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="images/street style.jpg" alt="Collage 2">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="images/love story.jpg" alt="Collage 3">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="images/life style.jpg" alt="Collage 4">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(4)">
-                    <img src="images/Portrait.jpg" alt="Collage 5">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="images/silhouette.jpg" alt="Collage 6">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(6)">
-                    <img src="images/1.png" alt="Collage 7">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(7)">
-                    <img src="images/2.jpg" alt="Collage 8">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(8)">
-                    <img src="images/3.jpg" alt="Collage 9">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(9)">
-                    <img src="images/4.jpg" alt="Collage 10">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(10)">
-                    <img src="images/5.jpg" alt="Collage 11">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(11)">
-                    <img src="images/6.jpg" alt="Collage 12">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(12)">
-                    <img src="images/7.jpg" alt="Collage 13">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(13)">
-                    <img src="images/8.jpg" alt="Collage 14">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(14)">
-                    <img src="images/9.jpg" alt="Collage 15">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(15)">
-                    <img src="images/10.jpg" alt="Collage 16">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(16)">
-                    <img src="images/11.jpg" alt="Collage 17">
-                </div>
+                   <!-- СЕТКА КАК В ГАЛЕРЕЕ ТЕЛЕФОНА -->
+        <div class="gallery-grid" id="gallery">
+                <!-- Все ваши фото с правильными индексами -->
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="images/collage-style.jpg" alt="Collage 1">
             </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="images/3.jpg" alt="Collage 2">
+            </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+            <img src="images/4.jpg" alt="Collage 3">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+            <img src="images/10.jpg" alt="Collage 4"> 
+        </div>
+         <div class="gallery-item" onclick="openLightbox(4)">
+            <img src="images/14.jpg" alt="Collage 5"> 
         </div>
     </section>
 
@@ -439,41 +400,13 @@
     </footer>
 
     <script>
-        // Создание звезд
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
-            }
-        }
-        createStars();
-
         // ЛАЙТБОКС
         const images = [
-            'images/collage style.jpg',
-            'images/street style.jpg',
-            'images/love story.jpg',
-            'images/life style.jpg',
-            'images/Portrait.jpg',
-            'images/silhouette.jpg',
-            'images/1.png',
-            'images/2.jpg',
+            'images/collage-style.jpg',
             'images/3.jpg',
             'images/4.jpg',
-            'images/5.jpg',
-            'images/6.jpg',
-            'images/7.jpg',
-            'images/8.jpg',
-            'images/9.jpg',
             'images/10.jpg',
-            'images/11.jpg'
+            'images/14.jpg',
         ];
         
         let currentImageIndex = 0;
