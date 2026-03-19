@@ -587,11 +587,26 @@
             }
         }
         
-        /* Адаптация для телефонов - 1 колонка */
+          /* Адаптация для телефонов - 1 колонка */
         @media (max-width: 480px) {
             .gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
+            }
+        }
+
+        /* ========== АДАПТАЦИЯ КНОПКИ ДЛЯ ТЕЛЕФОНА ========== */
+        @media (max-width: 768px) {
+            nav a[href*="t.me"] {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                padding-top: 8px !important;
+                padding-bottom: 8px !important;
+                font-size: 0.9rem;
+            }
+            
+            nav a[href*="t.me"] i {
+                font-size: 0.9rem;
             }
         }
     </style>
