@@ -1093,71 +1093,95 @@
 <body class="font-sans">
 
 
-    <!-- ШАПКА (Навигация) с современными стрелочками и бургер-меню -->
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Логотип или пустой div для отступа -->
-                <div class="text-[#D4AF37] font-bold text-xl hidden sm:block">Евгений Буевич</div>
-                <div class="sm:hidden"></div> <!-- Пустой блок на мобильных для отступа -->
-                
-                <!-- Десктопное меню (скрывается на мобильных) -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-                    <div class="dropdown">
-                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-                            Портфолио
-                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="life-style.html">Life style</a>
-                            <a href="love-story.html">Love story</a>
-                            <a href="portrait.html">Portrait</a>
-                            <a href="street-style.html">Street style</a>
-                            <a href="silhouette.html">Silhouette</a>
-                            <a href="collage-style.html">Collage style</a>
-                        </div>
+   <!-- ШАПКА (Навигация) с современными стрелочками и бургер-меню -->
+<nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            <!-- Бургер-меню кнопка (видна только на мобильных) - ПЕРЕНЕСЕНА В НАЧАЛО -->
+            <button id="mobileMenuBtn" class="mobile-menu-btn hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Логотип (скрыт на мобильных) -->
+            <div class="text-[#D4AF37] font-bold text-xl hidden sm:block">Евгений Буевич</div>
+            
+            <!-- Десктопное меню (скрывается на мобильных) -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО -->
+                <div class="dropdown">
+                    <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
+                        Портфолио
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="life-style.html">Life style</a>
+                        <a href="love-story.html">Love story</a>
+                        <a href="portrait.html">Portrait</a>
+                        <a href="street-style.html">Street style</a>
+                        <a href="silhouette.html">Silhouette</a>
+                        <a href="collage-style.html">Collage style</a>
                     </div>
-
-                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
-                    <a href="#" class="text-gray-300 hover:text-white transition relative group">
-                        На главную
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- СТИЛЫ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-                    <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Прайсы
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <a href="#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Связь со мной
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>            
                 </div>
 
-                <!-- Бургер-меню кнопка (видна только на мобильных) -->
-                <button id="mobileMenuBtn" class="mobile-menu-btn hidden text-white text-2xl focus:outline-none">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ -->
+                <a href="#" class="text-gray-300 hover:text-white transition relative group">
+                    На главную
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>
+                
+                <!-- ПРАЙСЫ -->
+                <a href="#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                    Прайсы
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>
+                
+                <!-- СВЯЗЬ СО МНОЙ -->
+                <a href="#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                    Связь со мной
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>            
+            </div>
 
-                 <!-- Кнопка "Записаться" справа -->
-                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
-                    <i class="fas fa-calendar-check"></i>Записаться
-                 </a>
+            <!-- Кнопка "Записаться" справа -->
+            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
+                <i class="fas fa-calendar-check"></i>Записаться
+            </a>
+        </div>
+    </div>
+
+    <!-- Мобильное меню (выпадающее) -->
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="#" onclick="toggleMobileMenu()">На главную</a>
+        
+        <!-- Портфолио с выпадающим списком -->
+        <div class="relative">
+            <a href="#portfolio" onclick="toggleDropdownMobile(event)" class="flex justify-between items-center">
+                Портфолио
+                <i class="fas fa-chevron-down text-sm"></i>
+            </a>
+            <div id="portfolioDropdown" class="dropdown-content-mobile">
+                <a href="life-style.html" onclick="toggleMobileMenu()">Life style</a>
+                <a href="love-story.html" onclick="toggleMobileMenu()">Love story</a>
+                <a href="portrait.html" onclick="toggleMobileMenu()">Portrait</a>
+                <a href="street-style.html" onclick="toggleMobileMenu()">Street style</a>
+                <a href="silhouette.html" onclick="toggleMobileMenu()">Silhouette</a>
+                <a href="collage-style.html" onclick="toggleMobileMenu()">Collage style</a>
             </div>
         </div>
-
+        
+        <a href="#prices" onclick="toggleMobileMenu()">Прайсы</a>
+        <a href="#contacts" onclick="toggleMobileMenu()">Связь со мной</a>
+    </div>
+</nav>
         <!-- Мобильное меню (выпадающее) -->
         <div id="mobileMenu" class="mobile-menu">
             <a href="#" onclick="toggleMobileMenu()">На главную</a>
