@@ -656,7 +656,6 @@
             gap: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-left: 10px;
             z-index: 95;
         }
 
@@ -888,17 +887,6 @@
             /* Скрываем десктопное меню */
             .desktop-menu {
                 display: none !important;
-            }
-            
-            /* Адаптируем шапку */
-            nav .flex.justify-between {
-                padding: 0 10px;
-            }
-            
-            nav .px-8 {
-                padding-left: 16px;
-                padding-right: 16px;
-                font-size: 0.9rem;
             }
             
             /* Обложка */
@@ -1393,15 +1381,18 @@
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- Кнопка бургер для мобильных -->
-                <div class="burger-btn md:hidden" id="burgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <!-- Левая часть: бургер (только мобилки) -->
+                <div class="flex items-center">
+                    <!-- Кнопка бургер для мобильных -->
+                    <div class="burger-btn md:hidden" id="burgerBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
                 
-                <!-- Десктопное меню -->
-                <div class="hidden md:flex space-x-8 items-center desktop-menu">
+                <!-- Десктопное меню - по центру -->
+                <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-menu">
                     <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
                     <div class="dropdown">
                         <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
@@ -1445,6 +1436,7 @@
                     </a>            
                 </div>
                 
+                <!-- Правая часть: кнопка Записаться -->
                 <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
                     <i class="fas fa-calendar-check"></i>Записаться
                 </a>     
