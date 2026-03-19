@@ -322,49 +322,51 @@
             font-size: 0.9rem;
         }
 
-        /* СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+        /* СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ (только для десктопа) */
+        @media (min-width: 769px) {
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            z-index: 1;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(10px);
+                min-width: 200px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 10px;
+                z-index: 1;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
 
-        .dropdown-content a {
-            color: #d1d5db;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            white-space: nowrap;
-        }
+            .dropdown-content a {
+                color: #d1d5db;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                transition: all 0.2s ease;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                white-space: nowrap;
+            }
 
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
+            .dropdown-content a:last-child {
+                border-bottom: none;
+            }
 
-        .dropdown-content a:hover {
-            background: rgba(212, 175, 55, 0.2);
-            color: white;
-            padding-left: 20px;
-        }
+            .dropdown-content a:hover {
+                background: rgba(212, 175, 55, 0.2);
+                color: white;
+                padding-left: 20px;
+            }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
         }
 
         .nav-link {
@@ -388,112 +390,6 @@
             background: rgba(212, 175, 55, 0.4);
             color: white;
             border-color: #D4AF37;
-        }
-
-        /* ========== МОБИЛЬНОЕ МЕНЮ ========== */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 100;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 99;
-            transition: left 0.3s ease;
-            padding: 80px 20px 30px;
-            border-right: 1px solid rgba(212, 175, 55, 0.3);
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            left: 0;
-        }
-
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 98;
-            display: none;
-            backdrop-filter: blur(3px);
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-
-        .mobile-menu-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 15px;
-        }
-
-        .mobile-menu-link {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-link:hover,
-        .mobile-menu-link.active {
-            color: #D4AF37;
-            padding-left: 15px;
-        }
-
-        .mobile-menu-link i {
-            font-size: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu-link:hover i {
-            transform: translateX(5px);
-        }
-
-        .mobile-submenu {
-            display: none;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-
-        .mobile-submenu.active {
-            display: block;
-        }
-
-        .mobile-submenu a {
-            display: block;
-            color: #9ca3af;
-            text-decoration: none;
-            padding: 8px 15px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border-left: 2px solid transparent;
-        }
-
-        .mobile-submenu a:hover {
-            color: #D4AF37;
-            border-left-color: #D4AF37;
-            background: rgba(212, 175, 55, 0.1);
         }
 
         /* ========== ИСПРАВЛЕНИЯ ДЛЯ ПРОЗРАЧНОСТИ ========== */
@@ -675,8 +571,294 @@
                 padding-top: 20px;
             }
         }
+
+        /* ========== МОБИЛЬНОЕ МЕНЮ СЛЕВА ========== */
         
-        /* ========== ТОЛЬКО АДАПТИВНОСТЬ ========== */
+        /* Затемнение фона при открытом меню */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 90;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Левое боковое меню */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 100;
+            transition: left 0.3s ease-in-out;
+            padding: 20px 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        /* Кнопка закрытия меню */
+        .menu-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 102;
+        }
+
+        .menu-close:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: rotate(90deg);
+            border-color: #D4AF37;
+        }
+
+        /* Кнопка бургер */
+        .burger-btn {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+            z-index: 95;
+        }
+
+        .burger-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+
+        .burger-btn span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .burger-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .burger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Стили для меню */
+        .menu-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .menu-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #D4AF37;
+            overflow: hidden;
+        }
+
+        .menu-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-name {
+            font-weight: bold;
+            color: white;
+        }
+
+        .menu-name span {
+            color: #D4AF37;
+        }
+
+        .menu-profession {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            gap: 12px;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .menu-link i {
+            width: 24px;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .menu-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: white;
+            padding-left: 25px;
+        }
+
+        .menu-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Подменю */
+        .submenu {
+            list-style: none;
+            padding-left: 56px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .submenu.active {
+            max-height: 300px;
+        }
+
+        .submenu-link {
+            display: block;
+            padding: 10px 0;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .submenu-link:before {
+            content: '•';
+            color: #D4AF37;
+            margin-right: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-link:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .submenu-link:hover:before {
+            opacity: 1;
+        }
+
+        .arrow-icon {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            color: #D4AF37;
+            font-size: 0.8rem;
+        }
+
+        .menu-link.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Контакты в меню */
+        .menu-contacts {
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 20px;
+        }
+
+        .menu-contacts-title {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .menu-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .menu-social a:hover {
+            background: #D4AF37;
+            color: black;
+            transform: translateY(-3px);
+        }
+
+        /* ========== АДАПТИВНОСТЬ ========== */
         
         /* Планшеты (до 1024px) */
         @media (max-width: 1024px) {
@@ -698,21 +880,25 @@
         
         /* Мобильные (до 768px) */
         @media (max-width: 768px) {
-            /* Шапка - возвращаем как было, только добавляем кнопку */
-            nav .space-x-8 {
-                display: none;
+            /* Показываем бургер */
+            .burger-btn {
+                display: flex;
             }
             
-            nav .flex {
-                justify-content: space-between;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .desktop-nav {
+            /* Скрываем десктопное меню */
+            .desktop-menu {
                 display: none !important;
+            }
+            
+            /* Адаптируем шапку */
+            nav .flex.justify-between {
+                padding: 0 10px;
+            }
+            
+            nav .px-8 {
+                padding-left: 16px;
+                padding-right: 16px;
+                font-size: 0.9rem;
             }
             
             /* Обложка */
@@ -868,14 +1054,6 @@
             /* Анимации */
             .fade-in-up {
                 animation-duration: 0.8s;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .mobile-menu-btn,
-            .mobile-menu,
-            .mobile-menu-overlay {
-                display: none !important;
             }
         }
         
@@ -1121,50 +1299,109 @@
             }
             
             nav .px-8 {
-                padding-left: 8px;
-                padding-right: 8px;
-                font-size: 0.7rem;
-            }
-        }
-        
-        /* Исправление для выпадающего меню на мобильных */
-        @media (max-width: 768px) {
-            .dropdown-content {
-                position: static;
-                transform: none;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                display: none;
-                min-width: 100%;
-            }
-
-            .dropdown:hover .dropdown-content {
-                display: none;
-            }
-
-            .dropdown.active .dropdown-content {
-                display: block;
+                padding-left: 12px;
+                padding-right: 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body class="font-sans">
 
+    <!-- Затемнение фона при открытом меню -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Левое боковое меню для мобильных -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-close" id="menuClose">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <div class="menu-header">
+            <div class="menu-profile">
+                <div class="menu-avatar">
+                    <img src="images/PhotoProfil.jpg" alt="Евгений Буевич">
+                </div>
+                <div>
+                    <div class="menu-name">Евгений <span>Буевич</span></div>
+                    <div class="menu-profession">Фотограф</div>
+                </div>
+            </div>
+        </div>
+        
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    На главную
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="#about" class="menu-link">
+                    <i class="fas fa-user"></i>
+                    Обо мне
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link" id="portfolioSubmenuToggle">
+                    <i class="fas fa-images"></i>
+                    Портфолио
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </a>
+                <ul class="submenu" id="portfolioSubmenu">
+                    <li><a href="life-style.html" class="submenu-link">Life style</a></li>
+                    <li><a href="love-story.html" class="submenu-link">Love story</a></li>
+                    <li><a href="portrait.html" class="submenu-link">Portrait</a></li>
+                    <li><a href="street-style.html" class="submenu-link">Street style</a></li>
+                    <li><a href="silhouette.html" class="submenu-link">Silhouette</a></li>
+                    <li><a href="collage-style.html" class="submenu-link">Collage style</a></li>
+                </ul>
+            </li>
+            
+            <li class="menu-item">
+                <a href="#prices" class="menu-link">
+                    <i class="fas fa-tag"></i>
+                    Прайсы
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="#contacts" class="menu-link">
+                    <i class="fas fa-phone"></i>
+                    Контакты
+                </a>
+            </li>
+        </ul>
+        
+        <div class="menu-contacts">
+            <div class="menu-contacts-title">Соцсети</div>
+            <div class="menu-social">
+                <a href="https://wa.me/79991758033" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/Svytoi_tap0k" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zenka675" target="_blank"><i class="fab fa-vk"></i></a>
+            </div>
+            <div style="text-align: center; margin-top: 15px; color: #D4AF37;">
+                <i class="fas fa-phone"></i> +7 (999) 175-80-33
+            </div>
+        </div>
+    </div>
+
     <!-- ШАПКА (Навигация) с современными стрелочками -->
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- Кнопка мобильного меню (три полоски) - БУДЕТ ВИДНА ТОЛЬКО НА МОБИЛЬНЫХ -->
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <!-- Кнопка бургер для мобильных -->
+                <div class="burger-btn md:hidden" id="burgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 
-                <!-- Пустой div для сохранения отступов на мобильных -->
-                <div></div>
-                
-                <!-- Десктопное меню - БУДЕТ ЦЕНТРИРОВАНО КАК БЫЛО -->
-                <div class="hidden md:flex space-x-8 items-center">
+                <!-- Десктопное меню -->
+                <div class="hidden md:flex space-x-8 items-center desktop-menu">
                     <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
                     <div class="dropdown">
                         <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
@@ -1207,54 +1444,13 @@
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                     </a>            
                 </div>
+                
                 <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
                     <i class="fas fa-calendar-check"></i>Записаться
-                </a>
+                </a>     
             </div>
         </div>
     </nav>
-
-    <!-- Мобильное меню (выезжающее) -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-item">
-            <div class="mobile-menu-link" onclick="toggleMobileSubmenu('portfolioSubmenu')">
-                Портфолио
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="mobile-submenu" id="portfolioSubmenu">
-                <a href="life-style.html">Life style</a>
-                <a href="love-story.html">Love story</a>
-                <a href="portrait.html">Portrait</a>
-                <a href="street-style.html">Street style</a>
-                <a href="silhouette.html">Silhouette</a>
-                <a href="collage-style.html">Collage style</a>
-            </div>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="#" class="mobile-menu-link" onclick="closeMobileMenu()">
-                На главную
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="#prices" class="mobile-menu-link" onclick="closeMobileMenu()">
-                Прайсы
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="#contacts" class="mobile-menu-link" onclick="closeMobileMenu()">
-                Связь со мной
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Затемнение фона при открытом меню -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
 
     <!-- 1. ОБЛОЖКА -->
     <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden py-20">
@@ -1649,6 +1845,7 @@
             </div>
         </div>
     </footer>
+    
     <!-- СКРИПТЫ -->
     <script>
         // Слайдер
@@ -1706,48 +1903,61 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
-                    // Закрываем мобильное меню если открыто
-                    closeMobileMenu();
                 }
             });
         });
 
-        // Мобильное меню
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Блокируем прокрутку body при открытом меню
-            if (menu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+        // ========== МОБИЛЬНОЕ МЕНЮ ==========
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuClose = document.getElementById('menuClose');
+        const portfolioSubmenuToggle = document.getElementById('portfolioSubmenuToggle');
+        const portfolioSubmenu = document.getElementById('portfolioSubmenu');
+
+        // Открытие меню
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            burgerBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
+        // Закрытие меню
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            burgerBtn.classList.remove('active');
             document.body.style.overflow = '';
-            
-            // Закрываем все открытые подменю
-            document.querySelectorAll('.mobile-submenu').forEach(submenu => {
-                submenu.classList.remove('active');
+        }
+
+        // Обработчики для открытия/закрытия
+        burgerBtn.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Закрытие при клике на ссылку в меню
+        document.querySelectorAll('.menu-link, .submenu-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Не закрываем если это ссылка с подменю
+                if (this.id !== 'portfolioSubmenuToggle') {
+                    closeMenu();
+                }
             });
-        }
+        });
 
-        function toggleMobileSubmenu(submenuId) {
-            const submenu = document.getElementById(submenuId);
-            submenu.classList.toggle('active');
-        }
+        // Тоггл подменю
+        portfolioSubmenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            portfolioSubmenu.classList.toggle('active');
+            this.classList.toggle('active');
+        });
 
-        // Закрываем меню при клике на ссылку
-        document.querySelectorAll('.mobile-menu-link[href^="#"]').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
     </script>
 </body>
