@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Евгений Буевич | Collage style</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -26,126 +26,6 @@
             font-family: system-ui, sans-serif;
         }
         
-        /* СТЕКЛЯННЫЙ ЭФФЕКТ ИЗ ПЕРВОГО ФАЙЛА */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* ========== МОБИЛЬНОЕ МЕНЮ ========== */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 100;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 99;
-            transition: left 0.3s ease;
-            padding: 80px 20px 30px;
-            border-right: 1px solid rgba(212, 175, 55, 0.3);
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            left: 0;
-        }
-
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 98;
-            display: none;
-            backdrop-filter: blur(3px);
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-
-        .mobile-menu-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 15px;
-        }
-
-        .mobile-menu-link {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-link:hover,
-        .mobile-menu-link.active {
-            color: #D4AF37;
-            padding-left: 15px;
-        }
-
-        .mobile-menu-link i {
-            font-size: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu-link:hover i {
-            transform: translateX(5px);
-        }
-
-        .mobile-submenu {
-            display: none;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-
-        .mobile-submenu.active {
-            display: block;
-        }
-
-        .mobile-submenu a {
-            display: block;
-            color: #9ca3af;
-            text-decoration: none;
-            padding: 8px 15px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border-left: 2px solid transparent;
-        }
-
-        .mobile-submenu a:hover {
-            color: #D4AF37;
-            border-left-color: #D4AF37;
-            background: rgba(212, 175, 55, 0.1);
-        }
         
         /* НОВАЯ СЕТКА КАК В ГАЛЕРЕЕ */
         .gallery-grid {
@@ -329,185 +209,499 @@
             -webkit-text-fill-color: transparent; 
         }
         
-        /* МЕНЮ */
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); min-width: 200px; border-radius: 10px; top: 100%; left: 50%; transform: translateX(-50%); }
-        .dropdown-content a { color: #d1d5db; padding: 12px 16px; display: block; text-decoration: none; }
-        .dropdown-content a:hover { background: rgba(212,175,55,0.2); color: white; padding-left: 20px; }
-        .dropdown:hover .dropdown-content { display: block; }
+        /* МЕНЮ для десктопа */
+        @media (min-width: 769px) {
+            .dropdown { 
+                position: relative; 
+                display: inline-block; 
+            }
+            .dropdown-content { 
+                display: none; 
+                position: absolute; 
+                background: rgba(10,10,10,0.95); 
+                backdrop-filter: blur(10px); 
+                min-width: 200px; 
+                border-radius: 10px; 
+                top: 100%; 
+                left: 50%; 
+                transform: translateX(-50%); 
+            }
+            .dropdown-content a { 
+                color: #d1d5db; 
+                padding: 12px 16px; 
+                display: block; 
+                text-decoration: none; 
+            }
+            .dropdown-content a:hover { 
+                background: rgba(212,175,55,0.2); 
+                color: white; 
+                padding-left: 20px; 
+            }
+            .dropdown:hover .dropdown-content { 
+                display: block; 
+            }
+        }
+
+        /* ========== МОБИЛЬНОЕ МЕНЮ СЛЕВА ========== */
+        
+        /* Затемнение фона при открытом меню */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 90;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Левое боковое меню */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 100;
+            transition: left 0.3s ease-in-out;
+            padding: 20px 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        /* Кнопка закрытия меню */
+        .menu-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 102;
+        }
+
+        .menu-close:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: rotate(90deg);
+            border-color: #D4AF37;
+        }
+
+        /* Кнопка бургер */
+        .burger-btn {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 95;
+        }
+
+        .burger-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+
+        .burger-btn span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .burger-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .burger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Стили для меню */
+        .menu-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .menu-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #D4AF37;
+            overflow: hidden;
+        }
+
+        .menu-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-name {
+            font-weight: bold;
+            color: white;
+        }
+
+        .menu-name span {
+            color: #D4AF37;
+        }
+
+        .menu-profession {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            gap: 12px;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .menu-link i {
+            width: 24px;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .menu-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: white;
+            padding-left: 25px;
+        }
+
+        .menu-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Подменю */
+        .submenu {
+            list-style: none;
+            padding-left: 56px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .submenu.active {
+            max-height: 300px;
+        }
+
+        .submenu-link {
+            display: block;
+            padding: 10px 0;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .submenu-link:before {
+            content: '•';
+            color: #D4AF37;
+            margin-right: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-link:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .submenu-link:hover:before {
+            opacity: 1;
+        }
+
+        .arrow-icon {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            color: #D4AF37;
+            font-size: 0.8rem;
+        }
+
+        .menu-link.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Контакты в меню */
+        .menu-contacts {
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 20px;
+        }
+
+        .menu-contacts-title {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .menu-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .menu-social a:hover {
+            background: #D4AF37;
+            color: black;
+            transform: translateY(-3px);
+        }
 
         /* Адаптация для мобильных */
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
+            .burger-btn {
+                display: flex;
             }
             
-            .desktop-nav {
-                display: none !important;
-            }
-            
-            nav .flex.justify-between {
-                justify-content: flex-start !important;
-                gap: 15px;
-            }
-            
-            nav .px-8 {
-                padding-left: 12px;
-                padding-right: 12px;
-                font-size: 0.85rem;
-                margin-left: auto;
-            }
-            
-            .hero-bg h1 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .mobile-menu-btn,
-            .mobile-menu,
-            .mobile-menu-overlay {
+            .desktop-menu {
                 display: none !important;
             }
         }
         
-        /* Очень маленькие телефоны */
-        @media (max-width: 480px) {
-            .hero-bg h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-bg p {
-                font-size: 1rem;
-            }
-            
-            nav .px-8 {
-                padding-left: 8px;
-                padding-right: 8px;
-                font-size: 0.75rem;
-            }
+        /* СТЕКЛЯННЫЙ ЭФФЕКТ ИЗ ПЕРВОГО ФАЙЛА */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
         
-        /* Кнопка Записаться */
-        .from-amber-800.to-yellow-800 {
-            background: linear-gradient(to right, #B8860B, #D4AF37) !important;
-        }
-        
-        .hover\:from-amber-900.hover\:to-yellow-900:hover {
-            background: linear-gradient(to right, #8B6910, #B8860B) !important;
-        }
-        
-        /* КРУГ ФОТОГРАФИИ - ЗОЛОТОЙ КОНТУР */
-        .rounded-full {
-            border-color: #D4AF37 !important;
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <!-- Затемнение фона при открытом меню -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- ШАПКА (Навигация) с современными стрелочками -->
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Кнопка мобильного меню (три полоски) -->
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <!-- Десктопное меню -->
-                <div class="hidden md:flex space-x-8 items-center desktop-nav">
-                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-                    <div class="dropdown">
-                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-                            Портфолио
-                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="life-style.html">Life style</a>
-                            <a href="love-story.html">Love story</a>
-                            <a href="portrait.html">Portrait</a>
-                            <a href="street-style.html">Street style</a>
-                            <a href="silhouette.html">Silhouette</a>
-                            <a href="collage-style.html">Collage style</a>
-                        </div>
-                    </div>
-
-                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО - ИСПРАВЛЕНО -->
-                    <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
-                        На главную
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- СТИЛЫ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ИСПРАВЛЕНО -->
-                    <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Прайсы
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Связь со мной
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>            
-                </div>
-                
-                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
-                    <i class="fas fa-calendar-check"></i>Записаться
-                </a>     
-            </div>
-        </div>
-    </nav>
-
-    <!-- Мобильное меню (выезжающее) -->
+    <!-- Левое боковое меню для мобильных -->
     <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-item">
-            <div class="mobile-menu-link" onclick="toggleMobileSubmenu('portfolioSubmenu')">
-                Портфолио
-                <i class="fas fa-chevron-down"></i>
+        <div class="menu-close" id="menuClose">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <div class="menu-header">
+            <div class="menu-profile">
+                <div class="menu-avatar">
+                    <img src="images/PhotoProfil.jpg" alt="Евгений Буевич">
+                </div>
+                <div>
+                    <div class="menu-name">Евгений <span>Буевич</span></div>
+                    <div class="menu-profession">Фотограф</div>
+                </div>
             </div>
-            <div class="mobile-submenu" id="portfolioSubmenu">
-                <a href="life-style.html">Life style</a>
-                <a href="love-story.html">Love story</a>
-                <a href="portrait.html">Portrait</a>
-                <a href="street-style.html">Street style</a>
-                <a href="silhouette.html">Silhouette</a>
-                <a href="collage-style.html">Collage style</a>
+        </div>
+        
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="index.html" class="menu-link">
+                    <i class="fas fa-home"></i>
+                    На главную
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="index.html#about" class="menu-link">
+                    <i class="fas fa-user"></i>
+                    Обо мне
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link" id="portfolioSubmenuToggle">
+                    <i class="fas fa-images"></i>
+                    Портфолио
+                    <i class="fas fa-chevron-down arrow-icon"></i>
+                </a>
+                <ul class="submenu" id="portfolioSubmenu">
+                    <li><a href="life-style.html" class="submenu-link">Life style</a></li>
+                    <li><a href="love-story.html" class="submenu-link">Love story</a></li>
+                    <li><a href="portrait.html" class="submenu-link">Portrait</a></li>
+                    <li><a href="street-style.html" class="submenu-link">Street style</a></li>
+                    <li><a href="silhouette.html" class="submenu-link">Silhouette</a></li>
+                    <li><a href="collage-style.html" class="submenu-link">Collage style</a></li>
+                </ul>
+            </li>
+            
+            <li class="menu-item">
+                <a href="index.html#prices" class="menu-link">
+                    <i class="fas fa-tag"></i>
+                    Прайсы
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="index.html#contacts" class="menu-link">
+                    <i class="fas fa-phone"></i>
+                    Контакты
+                </a>
+            </li>
+        </ul>
+        
+        <div class="menu-contacts">
+            <div class="menu-contacts-title">Соцсети</div>
+            <div class="menu-social">
+                <a href="https://wa.me/79991758033" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/Svytoi_tap0k" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/zenka675" target="_blank"><i class="fab fa-vk"></i></a>
             </div>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="index.html" class="mobile-menu-link" onclick="closeMobileMenu()">
-                На главную
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="index.html#prices" class="mobile-menu-link" onclick="closeMobileMenu()">
-                Прайсы
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="index.html#contacts" class="mobile-menu-link" onclick="closeMobileMenu()">
-                Связь со мной
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <div style="text-align: center; margin-top: 15px; color: #D4AF37;">
+                <i class="fas fa-phone"></i> +7 (999) 175-80-33
+            </div>
         </div>
     </div>
 
-    <!-- Затемнение фона при открытом меню -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+ <!-- ШАПКА (Навигация) с современными стрелочками -->
+<nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            <!-- Левая часть: бургер (только мобилки) -->
+            <div class="flex items-center">
+                <!-- Кнопка бургер для мобильных -->
+                <div class="burger-btn md:hidden" id="burgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Десктопное меню - по центру -->
+            <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-menu">
+                <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                <div class="dropdown">
+                    <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
+                        Портфолио
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="life-style.html">Life style</a>
+                        <a href="love-story.html">Love story</a>
+                        <a href="portrait.html">Portrait</a>
+                        <a href="street-style.html">Street style</a>
+                        <a href="silhouette.html">Silhouette</a>
+                        <a href="collage-style.html">Collage style</a>
+                    </div>
+                </div>
+
+                <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО - ИСПРАВЛЕНО -->
+                <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
+                    На главную
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>
+                
+                <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ИСПРАВЛЕНО -->
+                <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                    Прайсы
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>
+                
+                <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                    Связь со мной
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                </a>            
+            </div>
+            
+            <!-- Правая часть: кнопка Записаться -->
+            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
+                <i class="fas fa-calendar-check"></i>Записаться
+            </a>     
+        </div>
+    </div>
+</nav>
 
     <section class="hero-bg h-[40vh] flex items-center justify-center text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
@@ -526,25 +720,23 @@
                     Галерея Collage style
                 </h2>
             </div>
-            <!-- СЕТКА КАК В ГАЛЕРЕЕ ТЕЛЕФОНА -->
-            <div class="gallery-grid" id="gallery">
+                   <!-- СЕТКА КАК В ГАЛЕРЕЕ ТЕЛЕФОНА -->
+        <div class="gallery-grid" id="gallery">
                 <!-- Все ваши фото с правильными индексами -->
-                <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="images/collage-style.jpg" alt="Collage 1">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="images/3.jpg" alt="Collage 2">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="images/4.jpg" alt="Collage 3">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="images/10.jpg" alt="Collage 4"> 
-                </div>
-                <div class="gallery-item" onclick="openLightbox(4)">
-                    <img src="images/14.jpg" alt="Collage 5"> 
-                </div>
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="images/collage-style.jpg" alt="Collage 1">
             </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="images/3.jpg" alt="Collage 2">
+            </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+            <img src="images/4.jpg" alt="Collage 3">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+            <img src="images/10.jpg" alt="Collage 4"> 
+        </div>
+         <div class="gallery-item" onclick="openLightbox(4)">
+            <img src="images/14.jpg" alt="Collage 5"> 
         </div>
     </section>
 
@@ -556,7 +748,7 @@
         <img id="lightbox-img" src="" alt="">
     </div>
     
-    <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
+     <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
     <footer id="contacts" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
@@ -659,42 +851,50 @@
             }
         });
 
-        // Мобильное меню
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Блокируем прокрутку body при открытом меню
-            if (menu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+        // ========== МОБИЛЬНОЕ МЕНЮ ==========
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuClose = document.getElementById('menuClose');
+        const portfolioSubmenuToggle = document.getElementById('portfolioSubmenuToggle');
+        const portfolioSubmenu = document.getElementById('portfolioSubmenu');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            burgerBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            burgerBtn.classList.remove('active');
             document.body.style.overflow = '';
-            
-            // Закрываем все открытые подменю
-            document.querySelectorAll('.mobile-submenu').forEach(submenu => {
-                submenu.classList.remove('active');
+        }
+
+        burgerBtn.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.menu-link, .submenu-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.id !== 'portfolioSubmenuToggle') {
+                    closeMenu();
+                }
             });
-        }
+        });
 
-        function toggleMobileSubmenu(submenuId) {
-            const submenu = document.getElementById(submenuId);
-            submenu.classList.toggle('active');
-        }
+        portfolioSubmenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            portfolioSubmenu.classList.toggle('active');
+            this.classList.toggle('active');
+        });
 
-        // Закрываем меню при клике на ссылку
-        document.querySelectorAll('.mobile-menu-link[href^="index.html"]').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
     </script>
 </body>
