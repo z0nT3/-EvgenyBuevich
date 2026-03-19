@@ -698,21 +698,13 @@
         
         /* Мобильные (до 768px) */
         @media (max-width: 768px) {
-            /* Шапка */
+            /* Шапка - возвращаем как было, только добавляем кнопку */
             nav .space-x-8 {
                 display: none;
             }
             
             nav .flex {
-                justify-content: flex-start !important;
-                gap: 15px;
-            }
-            
-            nav .px-8 {
-                padding-left: 12px;
-                padding-right: 12px;
-                font-size: 0.85rem;
-                margin-left: auto;
+                justify-content: space-between;
             }
             
             .mobile-menu-btn {
@@ -974,12 +966,6 @@
             .gap-8 {
                 gap: 16px;
             }
-            
-            nav .px-8 {
-                padding-left: 8px;
-                padding-right: 8px;
-                font-size: 0.75rem;
-            }
         }
         
         /* Планшеты в портретной ориентации (768-1024px) */
@@ -1169,13 +1155,16 @@
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- Кнопка мобильного меню (три полоски) -->
+                <!-- Кнопка мобильного меню (три полоски) - БУДЕТ ВИДНА ТОЛЬКО НА МОБИЛЬНЫХ -->
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
                 
-                <!-- Десктопное меню -->
-                <div class="hidden md:flex space-x-8 items-center desktop-nav">
+                <!-- Пустой div для сохранения отступов на мобильных -->
+                <div></div>
+                
+                <!-- Десктопное меню - БУДЕТ ЦЕНТРИРОВАНО КАК БЫЛО -->
+                <div class="hidden md:flex space-x-8 items-center">
                     <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
                     <div class="dropdown">
                         <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
@@ -1220,7 +1209,7 @@
                 </div>
                 <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
                     <i class="fas fa-calendar-check"></i>Записаться
-                </a>    
+                </a>
             </div>
         </div>
     </nav>
