@@ -587,13 +587,14 @@
             }
         }
         
-          /* Адаптация для телефонов - 1 колонка */
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-        }
+        /* Адаптация кнопки для телефона */
+@media (max-width: 768px) {
+    nav .px-8 {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        font-size: 0.8rem;
+    }
+}
 
         /* ========== АДАПТАЦИЯ КНОПКИ ДЛЯ ТЕЛЕФОНА ========== */
         @media (max-width: 768px) {
