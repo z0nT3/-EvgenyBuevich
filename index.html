@@ -390,6 +390,112 @@
             border-color: #D4AF37;
         }
 
+        /* ========== МОБИЛЬНОЕ МЕНЮ ========== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 99;
+            transition: left 0.3s ease;
+            padding: 80px 20px 30px;
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 98;
+            display: none;
+            backdrop-filter: blur(3px);
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        .mobile-menu-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .mobile-menu-link {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-link:hover,
+        .mobile-menu-link.active {
+            color: #D4AF37;
+            padding-left: 15px;
+        }
+
+        .mobile-menu-link i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .mobile-submenu {
+            display: none;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .mobile-submenu.active {
+            display: block;
+        }
+
+        .mobile-submenu a {
+            display: block;
+            color: #9ca3af;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+
+        .mobile-submenu a:hover {
+            color: #D4AF37;
+            border-left-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
         /* ========== ИСПРАВЛЕНИЯ ДЛЯ ПРОЗРАЧНОСТИ ========== */
         
         /* Убираем черные фоны у всех секций */
@@ -548,248 +654,6 @@
             padding-left: 20px;
         }
 
-        /* ========== МОБИЛЬНОЕ МЕНЮ ========== */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 100;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 99;
-            transition: left 0.3s ease;
-            padding: 80px 20px 30px;
-            border-right: 1px solid rgba(212, 175, 55, 0.3);
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            left: 0;
-        }
-
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 98;
-            display: none;
-            backdrop-filter: blur(3px);
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-
-        .mobile-menu-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 15px;
-        }
-
-        .mobile-menu-link {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-link:hover,
-        .mobile-menu-link.active {
-            color: #D4AF37;
-            padding-left: 15px;
-        }
-
-        .mobile-menu-link i {
-            font-size: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu-link:hover i {
-            transform: translateX(5px);
-        }
-
-        .mobile-submenu {
-            display: none;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-
-        .mobile-submenu.active {
-            display: block;
-        }
-
-        .mobile-submenu a {
-            display: block;
-            color: #9ca3af;
-            text-decoration: none;
-            padding: 8px 15px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border-left: 2px solid transparent;
-        }
-
-        .mobile-submenu a:hover {
-            color: #D4AF37;
-            border-left-color: #D4AF37;
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        /* ========== МОБИЛЬНЫЙ СПИСОК УСЛУГ ========== */
-        @media (max-width: 768px) {
-            .price-grid {
-                display: none;
-            }
-            
-            .mobile-price-list {
-                display: block !important;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .desktop-nav {
-                display: none !important;
-            }
-
-            nav .flex.justify-between {
-                justify-content: flex-start !important;
-                gap: 15px;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .mobile-price-list {
-                display: none !important;
-            }
-
-            .mobile-menu-btn,
-            .mobile-menu,
-            .mobile-menu-overlay {
-                display: none !important;
-            }
-        }
-        
-        .mobile-price-list {
-            margin-top: 30px;
-        }
-        
-        .mobile-price-item {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-price-item:hover {
-            transform: translateX(5px);
-            border-color: #D4AF37;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
-        }
-        
-        .mobile-price-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #D4AF37;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .mobile-price-price {
-            font-size: 1.2rem;
-            color: white;
-        }
-        
-        .mobile-price-description {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        
-        .mobile-price-features {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: #d1d5db;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding-top: 10px;
-        }
-        
-        .mobile-price-features i {
-            color: #D4AF37;
-            margin-right: 8px;
-            font-size: 0.8rem;
-        }
-        
-        .mobile-price-features span {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .mobile-price-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: #F0E68C;
-            text-decoration: none;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 8px 15px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .mobile-price-link:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: #D4AF37;
-        }
-        
-        .mobile-price-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-        
-        .mobile-price-icon i {
-            font-size: 1.2rem;
-            color: #D4AF37;
-        }
-        
-        .mobile-price-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
         @media (max-width: 768px) {
             .story-container {
                 flex-direction: column;
@@ -840,8 +704,8 @@
             }
             
             nav .flex {
-                justify-content: flex-start;
-                gap: 10px;
+                justify-content: flex-start !important;
+                gap: 15px;
             }
             
             nav .px-8 {
@@ -849,6 +713,14 @@
                 padding-right: 12px;
                 font-size: 0.85rem;
                 margin-left: auto;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: none !important;
             }
             
             /* Обложка */
@@ -923,9 +795,9 @@
                 font-size: 2.2rem;
             }
             
-            /* Прайсы - скрыты на мобильных */
+            /* Прайсы */
             .price-grid {
-                display: none;
+                grid-template-columns: 1fr;
             }
             
             .card-image-container {
@@ -1004,6 +876,14 @@
             /* Анимации */
             .fade-in-up {
                 animation-duration: 0.8s;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-menu-btn,
+            .mobile-menu,
+            .mobile-menu-overlay {
+                display: none !important;
             }
         }
         
@@ -1093,6 +973,12 @@
             
             .gap-8 {
                 gap: 16px;
+            }
+            
+            nav .px-8 {
+                padding-left: 8px;
+                padding-right: 8px;
+                font-size: 0.75rem;
             }
         }
         
@@ -1251,13 +1137,33 @@
             nav .px-8 {
                 padding-left: 8px;
                 padding-right: 8px;
-                font-size: 0.75rem;
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* Исправление для выпадающего меню на мобильных */
+        @media (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                transform: none;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                display: none;
+                min-width: 100%;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
             }
         }
     </style>
 </head>
 <body class="font-sans">
-
 
     <!-- ШАПКА (Навигация) с современными стрелочками -->
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
@@ -1521,7 +1427,6 @@
                 </p>
             </div>
 
-            <!-- ПК версия - карточки (остается без изменений) -->
             <div class="price-grid">
                 <!-- Life style -->
                 <div class="price-card">
@@ -1689,141 +1594,6 @@
                         </div>
                         <a href="collage-style.html" class="btn-detail">Смотреть работы Collage style</a>
                     </div>
-                </div>
-            </div>
-
-            <!-- МОБИЛЬНАЯ ВЕРСИЯ - СПИСОК -->
-            <div class="mobile-price-list">
-                <!-- Life style -->
-                <div class="mobile-price-item">
-                    <div class="mobile-price-header">
-                        <div class="mobile-price-icon">
-                            <i class="fas fa-camera-retro"></i>
-                        </div>
-                        <div>
-                            <div class="mobile-price-title">Life style</div>
-                            <div class="mobile-price-price">4 000₽/час</div>
-                        </div>
-                    </div>
-                    <div class="mobile-price-description">
-                        Стиль жизни – повседневная жизнь, стиль фотосессии направленная на повседневные дела людей
-                    </div>
-                    <div class="mobile-price-features">
-                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
-                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
-                        <span><i class="fas fa-check"></i> Помощь в позировании</span>
-                    </div>
-                    <a href="life-style.html" class="mobile-price-link">Смотреть работы →</a>
-                </div>
-
-                <!-- Love story -->
-                <div class="mobile-price-item">
-                    <div class="mobile-price-header">
-                        <div class="mobile-price-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div>
-                            <div class="mobile-price-title">Love story</div>
-                            <div class="mobile-price-price">5 000₽/час</div>
-                        </div>
-                    </div>
-                    <div class="mobile-price-description">
-                        Стиль который показывает романтические отношения между парами
-                    </div>
-                    <div class="mobile-price-features">
-                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
-                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
-                        <span><i class="fas fa-check"></i> Аренда помещения</span>
-                    </div>
-                    <a href="love-story.html" class="mobile-price-link">Смотреть работы →</a>
-                </div>
-
-                <!-- Portrait -->
-                <div class="mobile-price-item">
-                    <div class="mobile-price-header">
-                        <div class="mobile-price-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <div class="mobile-price-title">Portrait</div>
-                            <div class="mobile-price-price">4 000₽/час</div>
-                        </div>
-                    </div>
-                    <div class="mobile-price-description">
-                        Универсальный стиль фотосессии для личного архива
-                    </div>
-                    <div class="mobile-price-features">
-                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
-                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
-                        <span><i class="fas fa-check"></i> Помощь в позировании</span>
-                    </div>
-                    <a href="portrait.html" class="mobile-price-link">Смотреть работы →</a>
-                </div>
-
-                <!-- Street style -->
-                <div class="mobile-price-item">
-                    <div class="mobile-price-header">
-                        <div class="mobile-price-icon">
-                            <i class="fas fa-city"></i>
-                        </div>
-                        <div>
-                            <div class="mobile-price-title">Street style</div>
-                            <div class="mobile-price-price">4 000₽/час</div>
-                        </div>
-                    </div>
-                    <div class="mobile-price-description">
-                        Образ стиля в повседневной городской жизни
-                    </div>
-                    <div class="mobile-price-features">
-                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
-                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
-                        <span><i class="fas fa-check"></i> Подбор локаций</span>
-                    </div>
-                    <a href="street-style.html" class="mobile-price-link">Смотреть работы →</a>
-                </div>
-
-                <!-- Silhouette -->
-                <div class="mobile-price-item">
-                    <div class="mobile-price-header">
-                        <div class="mobile-price-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <div>
-                            <div class="mobile-price-title">Silhouette</div>
-                            <div class="mobile-price-price">4 000₽/час</div>
-                        </div>
-                    </div>
-                    <div class="mobile-price-description">
-                        Темный силуэт на ярком фоне
-                    </div>
-                    <div class="mobile-price-features">
-                        <span><i class="fas fa-check"></i> Предоплата 2 500₽</span>
-                        <span><i class="fas fa-check"></i> 20-30 фото обработки</span>
-                        <span><i class="fas fa-check"></i> Аренда помещения</span>
-                    </div>
-                    <a href="silhouette.html" class="mobile-price-link">Смотреть работы →</a>
-                </div>
-
-                <!-- Collage style -->
-                <div class="mobile-price-item">
-                    <div class="mobile-price-header">
-                        <div class="mobile-price-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div>
-                            <div class="mobile-price-title">Collage style</div>
-                            <div class="mobile-price-price">500₽/фото</div>
-                        </div>
-                    </div>
-                    <div class="mobile-price-description">
-                        Сочетание фрагментов различных материалов и текстур
-                    </div>
-                    <div class="mobile-price-features">
-                        <span><i class="fas fa-check"></i> Предоплата 250₽</span>
-                        <span><i class="fas fa-check"></i> Обработка фото</span>
-                        <span><i class="fas fa-check"></i> Помощь в позировании</span>
-                    </div>
-                    <a href="collage-style.html" class="mobile-price-link">Смотреть работы →</a>
                 </div>
             </div>
         </div>
