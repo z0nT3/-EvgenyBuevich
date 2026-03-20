@@ -363,7 +363,7 @@
         .dropdown-content a:hover { background: rgba(212, 175, 55, 0.2); color: white; padding-left: 20px; }
         .dropdown:hover .dropdown-content { display: block; }
         
-             /* Адаптация для мобильных */
+        /* Адаптация для мобильных */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -374,7 +374,7 @@
             }
             
             nav .flex.justify-between {
-                justify-content: space-between !important;
+                justify-content: flex-start !important;
                 gap: 15px;
             }
             
@@ -382,6 +382,7 @@
                 padding-left: 12px;
                 padding-right: 12px;
                 font-size: 0.85rem;
+                margin-left: auto;
             }
             
             .hero-bg h1 {
@@ -394,7 +395,13 @@
             }
         }
         
-     
+        @media (min-width: 769px) {
+            .mobile-menu-btn,
+            .mobile-menu,
+            .mobile-menu-overlay {
+                display: none !important;
+            }
+        }
         
         @media (max-width: 480px) {
             .hero-bg h1 {
@@ -425,354 +432,5 @@
         .hover\:from-amber-900.hover\:to-yellow-900:hover {
             background: linear-gradient(to right, #8B6910, #B8860B) !important;
         }
-
-        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ УСТРОЙСТВ ========== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FFD700;
-        }
-
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #D4AF37 #1a1a1a;
-        }
-
-        @media (max-width: 768px) {
-            ::-webkit-scrollbar {
-                width: 6px;
-            }
-            
-            ::-webkit-scrollbar-thumb {
-                border-radius: 3px;
-            }
-        }
     </style>
 </head>
-<body>
-    <div class="stars" id="stars"></div>
-
-    <!-- ШАПКА (Навигация) с современными стрелочками -->
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Кнопка мобильного меню (три полоски) -->
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-<!-- Десктопное меню - по центру -->
-<div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-nav">
-    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-    <div class="dropdown">
-        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-            Портфолио
-            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-        </a>
-        <div class="dropdown-content">
-            <a href="life-style.html">Life style</a>
-            <a href="love-story.html">Love story</a>
-            <a href="portrait.html">Portrait</a>
-            <a href="street-style.html">Street style</a>
-            <a href="silhouette.html">Silhouette</a>
-            <a href="collage-style.html">Collage style</a>
-        </div>
-    </div>
-
-    <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
-        На главную
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-    </a>
-    
-    <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-        Прайсы
-        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-    </a>
-    
-    <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-        Связь со мной
-        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-    </a>            
-</div>
-                
-                
-            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
-                <i class="fas fa-calendar-check"></i>Записаться
-            </a>     
-            </div>
-        </div>
-    </nav>
-
-    <!-- Мобильное меню (выезжающее) -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-item">
-            <div class="mobile-menu-link" onclick="toggleMobileSubmenu('portfolioSubmenu')">
-                Портфолио
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="mobile-submenu" id="portfolioSubmenu">
-                <a href="life-style.html">Life style</a>
-                <a href="love-story.html">Love story</a>
-                <a href="portrait.html">Portrait</a>
-                <a href="street-style.html">Street style</a>
-                <a href="silhouette.html">Silhouette</a>
-                <a href="collage-style.html">Collage style</a>
-            </div>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="index.html" class="mobile-menu-link" onclick="closeMobileMenu()">
-                На главную
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="index.html#prices" class="mobile-menu-link" onclick="closeMobileMenu()">
-                Прайсы
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        
-        <div class="mobile-menu-item">
-            <a href="index.html#contacts" class="mobile-menu-link" onclick="closeMobileMenu()">
-                Связь со мной
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Затемнение фона при открытом меню -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
-
-    <section class="hero-bg h-[30vh] flex items-center justify-center text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
-        <div class="text-center px-4 relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold mb-2">
-                <span class="text-[#D4AF37]">Street style</span>
-            </h1>
-            <p class="text-lg text-gray-300">Street style – мода и стиль на городских улицах</p>
-        </div>
-
-        <!-- СТРЕЛКА ВНИЗ -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 animated-bg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] text-transparent bg-clip-text">
-                    Галерея Street style
-                </h2>
-            </div>
-
-            <!-- СЕТКА РОВНО 3 КОЛОНКИ -->
-            <div class="gallery-grid" id="gallery">
-                <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="images/street-style.jpg" alt="Street">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="images/5.jpg" alt="Street 2">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="images/6.jpg" alt="Street 3">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="images/8.jpg" alt="Street 4">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(4)">
-                    <img src="images/9.jpg" alt="Street 5">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="images/12.jpg" alt="Street 6">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(6)">
-                    <img src="images/3.jpg" alt="Street 7">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(7)">
-                    <img src="images/4.jpg" alt="Street 8">
-                </div>
-                <div class="gallery-item" onclick="openLightbox(8)">
-                    <img src="images/10.jpg" alt="Street 9">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ЛАЙТБОКС -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
-        <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
-        <img id="lightbox-img" src="" alt="">
-    </div>
-
-    <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
-    <footer id="contacts" class="py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-[#D4AF37] to-[#F0E68C] text-transparent bg-clip-text">Связь со мной</h2>
-                <p class="text-white-400">Напишите мне в удобном мессенджере или соцсети</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-4 flex items-center text-white">
-                        <i class="fas fa-camera mr-2 text-[#D4AF37]"></i>
-                        Евгений Буевич
-                    </h3>
-                    <p class="text-white-400 mb-4">Профессиональная фотосъемка для частных клиентов и бизнеса.</p>
-                    <div class="space-y-2">
-                        <p class="text-white-300"><i class="fas fa-phone mr-2 text-[#D4AF37]"></i> +7 (999) 175-80-33</p>
-                    </div>
-                </div>
-                
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-4 text-white">Мессенджеры</h3>
-                    <div class="space-y-3">
-                        <a href="https://wa.me/79991758033" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
-                            <i class="fab fa-whatsapp mr-3 text-green-500 text-xl w-6"></i>
-                            <span>WhatsApp</span>
-                            <span class="ml-auto text-xs text-white-500">+7 (999) 175-80-33</span>
-                        </a>
-                        
-                        <a href="https://t.me/Svytoi_tap0k" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
-                            <i class="fab fa-telegram mr-3 text-blue-400 text-xl w-6"></i>
-                            <span>Telegram</span>
-                            <span class="ml-auto text-xs text-white-500">@Svytoi_tap0k</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-4 text-white">Соцсети</h3>
-                    <div class="space-y-3">
-                        <a href="#" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
-                            <i class="fab fa-instagram mr-3 text-pink-500 text-xl w-6"></i>
-                            <span>Instagram</span>
-                            <span class="ml-auto text-xs text-white-500">zenka77582020</span>                  
-                        </a>
-                        
-                        <a href="https://vk.com/zenka675" target="_blank" class="flex items-center text-white-300 hover:text-[#D4AF37] transition group p-2 rounded-lg">
-                            <i class="fab fa-vk mr-3 text-blue-400 text-xl w-6"></i>
-                            <span>ВКонтакте</span>
-                            <span class="ml-auto text-xs text-white-500">zenka675</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 pt-8 text-center text-white-400 text-sm">
-                <p>© 2026 Евгений Буевич. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const images = [
-            'images/street-style.jpg',
-            'images/5.jpg',
-            'images/6.jpg',
-            'images/8.jpg',
-            'images/9.jpg',
-            'images/12.jpg',
-            'images/3.jpg',
-            'images/4.jpg',
-            'images/10.jpg',
-        ];
-        
-        let currentImageIndex = 0;
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        
-        function openLightbox(index) {
-            currentImageIndex = index;
-            lightboxImg.src = images[currentImageIndex];
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function changeImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            lightboxImg.src = images[currentImageIndex];
-        }
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
-            }
-            if (lightbox.classList.contains('active')) {
-                if (e.key === 'ArrowLeft') changeImage(-1);
-                if (e.key === 'ArrowRight') changeImage(1);
-            }
-        });
-
-        // Мобильное меню
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Блокируем прокрутку body при открытом меню
-            if (menu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        }
-
-        function closeMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('mobileMenuOverlay');
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            
-            // Закрываем все открытые подменю
-            document.querySelectorAll('.mobile-submenu').forEach(submenu => {
-                submenu.classList.remove('active');
-            });
-        }
-
-        function toggleMobileSubmenu(submenuId) {
-            const submenu = document.getElementById(submenuId);
-            submenu.classList.toggle('active');
-        }
-
-        // Закрываем меню при клике на ссылку
-        document.querySelectorAll('.mobile-menu-link[href^="index.html"]').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-    </script>
-</body>
-</html>
