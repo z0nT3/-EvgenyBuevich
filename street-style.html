@@ -479,51 +479,48 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 
-                <!-- Десктопное меню -->
-                <div class="hidden md:flex space-x-8 items-center desktop-nav">
-                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-                    <div class="dropdown">
-                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-                            Портфолио
-                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="life-style.html">Life style</a>
-                            <a href="love-story.html">Love story</a>
-                            <a href="portrait.html">Portrait</a>
-                            <a href="street-style.html">Street style</a>
-                            <a href="silhouette.html">Silhouette</a>
-                            <a href="collage-style.html">Collage style</a>
-                        </div>
-                    </div>
+              какой код мне нужно заменить чтобы я понимал где мне вставлять этот код <!-- Десктопное меню - по центру -->
+<div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-nav">
+    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+    <div class="dropdown">
+        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
+            Портфолио
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+        </a>
+        <div class="dropdown-content">
+            <a href="life-style.html">Life style</a>
+            <a href="love-story.html">Love story</a>
+            <a href="portrait.html">Portrait</a>
+            <a href="street-style.html">Street style</a>
+            <a href="silhouette.html">Silhouette</a>
+            <a href="collage-style.html">Collage style</a>
+        </div>
+    </div>
 
-                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
-                    <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
-                        На главную
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
-                    <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Прайсы
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- СВЯЗЬ СО МНОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
-                    <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                        Связь со мной
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                    </a>            
-                </div>
+    <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
+        На главную
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+    </a>
+    
+    <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+        Прайсы
+        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+    </a>
+    
+    <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+        Связь со мной
+        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+    </a>            
+</div>
                 
                 <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
                     <i class="fas fa-calendar-check"></i>Записаться
