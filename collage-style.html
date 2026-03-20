@@ -11,53 +11,44 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         
-        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ПК (WebKit) ========== */
+        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ИЗ ВАШЕГО КОДА ========== */
+        /* СТИЛЬНЫЙ СКРОЛЛБАР - ЗОЛОТОЙ (как в основном файле) */
         ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
+            background: #1a1a1a;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #D4AF37, #F0E68C);
-            border-radius: 10px;
-            border: 2px solid rgba(0, 0, 0, 0.2);
+            background: #D4AF37;
+            border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #F0E68C, #D4AF37);
+            background: #FFD700;
         }
         
-        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ FIREFOX ========== */
+        /* Поддержка для Firefox */
         * {
             scrollbar-width: thin;
-            scrollbar-color: #D4AF37 rgba(0, 0, 0, 0.3);
+            scrollbar-color: #D4AF37 #1a1a1a;
         }
         
-        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ МОБИЛЬНЫХ (WebKit) ========== */
+        /* Мобильная версия - тот же стиль (только чуть тоньше) */
         @media (max-width: 768px) {
             ::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
+                width: 6px;
             }
             
             ::-webkit-scrollbar-track {
-                background: rgba(0, 0, 0, 0.3);
-                border-radius: 8px;
+                background: #1a1a1a;
             }
             
             ::-webkit-scrollbar-thumb {
-                background: linear-gradient(135deg, #D4AF37, #F0E68C);
-                border-radius: 8px;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-            }
-            
-            ::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(135deg, #F0E68C, #D4AF37);
+                background: #D4AF37;
+                border-radius: 3px;
             }
         }
         
