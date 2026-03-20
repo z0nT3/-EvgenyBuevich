@@ -577,15 +577,51 @@
             color: black;
             transform: translateY(-3px);
         }
-
-        /* Адаптация для мобильных */
+        /* ========== АДАПТАЦИЯ КНОПКИ ДЛЯ ТЕЛЕФОНА ========== */
         @media (max-width: 768px) {
-            .burger-btn {
-                display: flex;
+            nav a[href*="t.me"] {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                padding-top: 8px !important;
+                padding-bottom: 8px !important;
+                font-size: 0.9rem;
             }
             
-            .desktop-menu {
-                display: none !important;
+            nav a[href*="t.me"] i {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ УСТРОЙСТВ ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
             }
         }
         
