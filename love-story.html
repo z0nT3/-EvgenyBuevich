@@ -569,18 +569,42 @@
             color: black;
             transform: translateY(-3px);
         }
+/* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ УСТРОЙСТВ ========== */
+/* Для Chrome, Safari, Edge (WebKit) */
+::-webkit-scrollbar {
+    width: 8px;
+}
 
-        /* Адаптация для мобильных */
-        @media (max-width: 768px) {
-            .burger-btn {
-                display: flex;
-            }
-            
-            .desktop-menu {
-                display: none !important;
-            }
-        }
-        
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFD700;
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #D4AF37 #1a1a1a;
+}
+
+/* Для мобильных устройств (чуть тоньше) */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+    }
+}
+      
         /* Адаптация для планшетов - 2 колонки */
         @media (max-width: 768px) {
             .gallery-grid {
@@ -596,6 +620,8 @@
                 gap: 12px;
             }
         }
+
+        
     </style>
 </head>
 <body>
