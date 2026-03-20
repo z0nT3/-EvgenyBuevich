@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Евгений Буевич | Life style съемка</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -268,13 +268,19 @@
                 top: 100%; 
                 left: 50%; 
                 transform: translateX(-50%); 
+                border: 1px solid rgba(255,255,255,0.1);
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
             }
             .dropdown-content a { 
                 color: #d1d5db; 
-                padding: 10px 14px; 
+                padding: 12px 16px; 
                 display: block; 
-                text-decoration: none; 
-                font-size: 0.95rem; 
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                transition: all 0.2s ease;
+            }
+            .dropdown-content a:last-child {
+                border-bottom: none;
             }
             .dropdown-content a:hover { 
                 background: rgba(212, 175, 55, 0.2); 
@@ -587,62 +593,80 @@
             }
         }
         
-        /* Адаптация кнопки для телефона */
-@media (max-width: 768px) {
-    nav .px-8 {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-        font-size: 0.8rem;
-    }
-}
         /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ УСТРОЙСТВ ========== */
-/* Для Chrome, Safari, Edge (WebKit) */
-::-webkit-scrollbar {
-    width: 8px;
-}
+        /* Для Chrome, Safari, Edge (WebKit) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
 
-::-webkit-scrollbar-thumb {
-    background: #D4AF37;
-    border-radius: 4px;
-}
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #FFD700;
-}
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
 
-/* Для Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #D4AF37 #1a1a1a;
-}
+        /* Для Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #1a1a1a;
+        }
 
-/* Для мобильных устройств (чуть тоньше) */
-@media (max-width: 768px) {
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        border-radius: 3px;
-    }
-}
-
-        /* ========== АДАПТАЦИЯ КНОПКИ ДЛЯ ТЕЛЕФОНА ========== */
+        /* Для мобильных устройств (чуть тоньше) */
         @media (max-width: 768px) {
-            nav a[href*="t.me"] {
-                padding-left: 12px !important;
-                padding-right: 12px !important;
-                padding-top: 8px !important;
-                padding-bottom: 8px !important;
-                font-size: 0.9rem;
+            ::-webkit-scrollbar {
+                width: 6px;
             }
             
-            nav a[href*="t.me"] i {
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+            }
+        }
+        
+        /* Кнопка Записаться - единый размер с основной страницей */
+        .btn-signup {
+            background: linear-gradient(to right, #B8860B, #D4AF37);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-signup:hover {
+            background: linear-gradient(to right, #8B6910, #B8860B);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Адаптация кнопки на мобильных */
+        @media (max-width: 768px) {
+            .btn-signup {
+                padding: 8px 20px;
                 font-size: 0.9rem;
+                gap: 6px;
+            }
+            
+            .btn-signup i {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .btn-signup {
+                padding: 6px 16px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -729,73 +753,73 @@
         </div>
     </div>
 
- <!-- ШАПКА (Навигация) с современными стрелочками -->
-<nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-            <!-- Левая часть: бургер (только мобилки) -->
-            <div class="flex items-center">
-                <!-- Кнопка бургер для мобильных -->
-                <div class="burger-btn md:hidden" id="burgerBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <!-- ШАПКА (Навигация) с современными стрелочками -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Левая часть: бургер (только мобилки) -->
+                <div class="flex items-center">
+                    <!-- Кнопка бургер для мобильных -->
+                    <div class="burger-btn md:hidden" id="burgerBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Десктопное меню - по центру -->
-            <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-menu">
-                <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
-                <div class="dropdown">
-                    <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
-                        Портфолио
-                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                
+                <!-- Десктопное меню - по центру -->
+                <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 items-center desktop-menu">
+                    <!-- ВЫПАДАЮЩЕЕ МЕНЮ ПОРТФОЛИО С АНИМИРОВАННОЙ СТРЕЛКОЙ -->
+                    <div class="dropdown">
+                        <a href="#portfolio" class="text-gray-300 hover:text-white transition relative group nav-link flex items-center gap-1">
+                            Портфолио
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="life-style.html">Life style</a>
+                            <a href="love-story.html">Love story</a>
+                            <a href="portrait.html">Portrait</a>
+                            <a href="street-style.html">Street style</a>
+                            <a href="silhouette.html">Silhouette</a>
+                            <a href="collage-style.html">Collage style</a>
+                        </div>
+                    </div>
+
+                    <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
+                    <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
+                        На главную
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>
+                    
+                    <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
+                    <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                        Прайсы
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
                     </a>
-                    <div class="dropdown-content">
-                        <a href="life-style.html">Life style</a>
-                        <a href="love-story.html">Love story</a>
-                        <a href="portrait.html">Portrait</a>
-                        <a href="street-style.html">Street style</a>
-                        <a href="silhouette.html">Silhouette</a>
-                        <a href="collage-style.html">Collage style</a>
-                    </div>
+                    
+                    <!-- СВЯЗЬ СО МНОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
+                    <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
+                        Связь со мной
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                    </a>            
                 </div>
-
-                <!-- НОВАЯ КНОПКА НА ГЛАВНУЮ ПОСЛЕ ПОРТФОЛИО -->
-                <a href="index.html" class="text-gray-300 hover:text-white transition relative group">
-                    На главную
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                </a>
                 
-                <!-- СТИЛИ СЪЕМКИ С АНИМИРОВАННОЙ СТРЕЛКОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
-                <a href="index.html#prices" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                    Прайсы
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                </a>
-                
-                <!-- СВЯЗЬ СО МНОЙ - ПЕРЕКИДЫВАЕТ НА ГЛАВНУЮ -->
-                <a href="index.html#contacts" class="text-gray-300 hover:text-white transition relative group flex items-center gap-1">
-                    Связь со мной
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
-                </a>            
+                <!-- Правая часть: кнопка Записаться - единый размер с основной страницей -->
+                <a href="https://t.me/Svytoi_tap0k" target="_blank" class="btn-signup">
+                    <i class="fas fa-calendar-check"></i>Записаться
+                </a>     
             </div>
-            
-            <!-- Правая часть: кнопка Записаться -->
-            <a href="https://t.me/Svytoi_tap0k" target="_blank" class="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-8 py-3 rounded-lg font-medium hover:from-[#8B6910] hover:to-[#B8860B] transition shadow-lg flex items-center gap-2">
-                <i class="fas fa-calendar-check"></i>Записаться
-            </a>     
         </div>
-    </div>
-</nav>
+    </nav>
 
     <section class="hero-bg h-[30vh] flex items-center justify-center text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
@@ -819,9 +843,10 @@
             <div class="gallery-grid" id="gallery">
                 <!-- Второй ряд - 3 фото -->
                 <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="images/life-style.jpg" alt="Street 1">
+                    <img src="images/life-style.jpg" alt="Life style 1">
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- ЛАЙТБОКС -->
@@ -832,7 +857,7 @@
         <img id="lightbox-img" src="" alt="">
     </div>
 
-         <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
+    <!-- 5. КОНТАКТЫ (ТЕПЕРЬ БЕЗ РАМОК И ФОНА) -->
     <footer id="contacts" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
