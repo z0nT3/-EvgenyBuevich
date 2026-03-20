@@ -432,6 +432,39 @@
         .hover\:from-amber-900.hover\:to-yellow-900:hover {
             background: linear-gradient(to right, #8B6910, #B8860B) !important;
         }
+
+        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ УСТРОЙСТВ ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+            }
+        }
     </style>
 </head>
 <body>
