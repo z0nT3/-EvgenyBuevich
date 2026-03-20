@@ -595,6 +595,41 @@
         font-size: 0.8rem;
     }
 }
+        /* ========== ЖЕЛТЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ УСТРОЙСТВ ========== */
+/* Для Chrome, Safari, Edge (WebKit) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFD700;
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #D4AF37 #1a1a1a;
+}
+
+/* Для мобильных устройств (чуть тоньше) */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+    }
+}
 
         /* ========== АДАПТАЦИЯ КНОПКИ ДЛЯ ТЕЛЕФОНА ========== */
         @media (max-width: 768px) {
