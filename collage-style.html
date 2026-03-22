@@ -312,21 +312,25 @@
             opacity: 1;
         }
 
-       /* Левое боковое меню */
+        /* Левое боковое меню */
         .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: -280px;
-        width: 280px;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(212, 175, 55, 0.3);
-        z-index: 100;
-        transition: left 0.3s ease-in-out;
-        padding: 20px 0 40px 0; /* Добавил 40px снизу */
-        overflow-y: auto;
-        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 100;
+            transition: left 0.3s ease-in-out;
+            padding: 20px 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-menu.active {
+            left: 0;
         }
 
         /* Кнопка закрытия меню */
@@ -355,24 +359,23 @@
             border-color: #D4AF37;
         }
 
-       .burger-btn {
-        display: none;
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 6px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 95;
-        margin-left: -16px; /* ИЛИ ДАЖЕ -20px, если нужно совсем к краю */
+        /* Кнопка бургер */
+        .burger-btn {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 95;
         }
-
 
         .burger-btn:hover {
             background: rgba(212, 175, 55, 0.2);
@@ -480,18 +483,18 @@
             transform: scale(1.1);
         }
 
-       /* Подменю */
+        /* Подменю */
         .submenu {
-         list-style: none;
-         padding-left: 56px;
-         max-height: 0;
-         overflow: hidden;
-         transition: max-height 0.3s ease;
-         background: rgba(0, 0, 0, 0.2);
+            list-style: none;
+            padding-left: 56px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
         }
 
-       .submenu.active {
-         max-height: 500px; /* Увеличил с 300px до 500px */
+        .submenu.active {
+            max-height: 300px;
         }
 
         .submenu-link {
