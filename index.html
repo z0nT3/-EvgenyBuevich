@@ -596,21 +596,19 @@
 
         /* Левое боковое меню */
         .mobile-menu {
-          display: none;
-          width: 44px;
-          height: 44px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(212, 175, 55, 0.3);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 6px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          z-index: 95;
-          margin-left: -8px; /* ДОБАВИТЬ ЭТУ СТРОКУ - сдвигает левее */
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 100;
+            transition: left 0.3s ease-in-out;
+            padding: 20px 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .mobile-menu.active {
@@ -643,23 +641,23 @@
             border-color: #D4AF37;
         }
 
-        /* Кнопка бургер */
-        .burger-btn {
-            display: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 95;
-        }
+     .burger-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 95;
+    margin-left: -16px; /* ИЛИ ДАЖЕ -20px, если нужно совсем к краю */
+}
 
         .burger-btn:hover {
             background: rgba(212, 175, 55, 0.2);
